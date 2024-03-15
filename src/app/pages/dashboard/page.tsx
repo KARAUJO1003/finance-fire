@@ -1,5 +1,4 @@
 import { CardMovimentations } from '@/app/_components/CardMovimentations'
-import { ApexChart } from '@/app/_components/ChartFinance'
 import { AreaChart, TrendingDown, TrendingUp } from 'lucide-react'
 
 export default function Dashboard() {
