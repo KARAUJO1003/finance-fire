@@ -14,6 +14,7 @@ export default function Details() {
   return (
     <div>
       <DataTable columns={columns} data={data} />
+      <h1>jjjj</h1>
     </div>
   )
 }
