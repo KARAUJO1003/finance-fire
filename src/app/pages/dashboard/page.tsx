@@ -1,3 +1,5 @@
+import { ApexChart } from '@/app/_components/ChartFinance'
+
 export default function Dashboard() {
-  return <h1>Helloooooo Dashhboard</h1>
+  return <ApexChart />
 }

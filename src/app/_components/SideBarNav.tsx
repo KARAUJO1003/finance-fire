@@ -1,6 +1,6 @@
 'use client'
 
-import { BarChart, ListCollapse } from 'lucide-react'
+import { BarChart, HomeIcon, ListCollapse } from 'lucide-react'
 import {
   SideNav,
   SideNavHeader,
@@ -18,8 +18,15 @@ export const SideBarNav = () => {
       <SideNavHeader>Header</SideNavHeader>
       <SideNavContent>
         <SideNavLink
-          icon={<BarChart size={14} className="mr-2" />}
+          icon={<HomeIcon size={14} className="mr-2" />}
           href="/"
+          currentPath={pathname}
+        >
+          Home
+        </SideNavLink>
+        <SideNavLink
+          icon={<BarChart size={14} className="mr-2" />}
+          href="/pages/dashboard"
           currentPath={pathname}
         >
           Dashboard

@@ -1,11 +1,17 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 import { HeaderPages } from '../_components/HeaderPages'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
-export default function Layout({ children }: PropsWithChildren) {
+export default function Layout({
+  children,
+}: PropsWithChildren<{ children: ReactNode }>) {
   return (
-    <div className="h-screen w-full">
+    <div className="h-screen w-full flex flex-col">
       <HeaderPages />
-      <main className="h-full w-full px-10 py-5">{children}</main>
+      <ScrollArea className="flex-1">
+        <main className="w-full px-10 py-5">{children}</main>
+        <ScrollBar orientation="vertical" />
+      </ScrollArea>
     </div>
   )
 }

@@ -60,9 +60,9 @@ export const SideNavLink = ({
   return (
     <Link href={href} className={cn([''], className)}>
       <Button
-        variant={isActive ? 'secondary' : 'ghost'}
+        variant={isActive ? 'outline' : 'link'}
         size={'sm'}
-        className="justify-start w-full"
+        className="justify-start w-full "
       >
         <span>{icon}</span>
         {children}
