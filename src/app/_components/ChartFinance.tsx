@@ -38,7 +38,7 @@ export const ApexChart = () => {
 
   const options = {
     chart: {
-      type: 'area' as const, // Specify the chart type explicitly
+      type: 'area', // Specify the chart type explicitly
       height: 350,
     },
     dataLabels: {
@@ -55,7 +55,7 @@ export const ApexChart = () => {
       },
     },
     xaxis: {
-      type: 'datetime' as const, // Specify the axis type explicitly
+      type: 'datetime', // Specify the axis type explicitly
       axisBorder: {
         show: false,
       },

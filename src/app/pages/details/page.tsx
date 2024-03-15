@@ -1,44 +1,19 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
+import { DataTable } from '@/app/_components/movimentations/data-table'
+import { columns } from '@/app/_components/movimentations/columns'
+import { FinancialRecord, financialRecords } from '@/utils/db'
 
-export default function details() {
+export default function Details() {
+  const [data, setData] = useState<FinancialRecord[]>([])
+
+  useEffect(() => {
+    setData(financialRecords)
+  }, [])
+
   return (
     <div>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
-      <h1>Details</h1>
+      <DataTable columns={columns} data={data} />
     </div>
   )
 }
