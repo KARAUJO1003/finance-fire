@@ -31,15 +31,34 @@ export const ApexChart = () => {
     }))
 
     setSeries([
-      { name: 'Income', data: incomeData },
-      { name: 'Expense', data: expenseData },
+      { name: 'Receita', data: incomeData },
+      { name: 'Despesa', data: expenseData },
     ])
   }, [])
 
   const options = {
+    series,
     chart: {
       type: 'area', // Specify the chart type explicitly
       height: 350,
+      toolbar: {
+        show: true,
+        offsetX: 0,
+        offsetY: 0,
+        tools: {
+          download: false,
+          selection: false,
+          zoom: false,
+          zoomin: true,
+          zoomout: true,
+          pan: false,
+          reset: false,
+        },
+        export: {
+          show: false,
+        },
+        autoSelected: 'zoom',
+      },
     },
     dataLabels: {
       enabled: false,
@@ -48,7 +67,7 @@ export const ApexChart = () => {
       curve: 'straight',
     },
     title: {
-      text: 'Financial Overview',
+      text: 'Movimentações',
       align: 'left',
       style: {
         fontSize: '14px',
@@ -62,13 +81,51 @@ export const ApexChart = () => {
       axisTicks: {
         show: false,
       },
-      toolbar: {
-        show: true,
-      },
       tooltip: {
-        enabled: false,
+        enabled: true,
+        enabledOnSeries: undefined,
+        shared: true,
+        followCursor: false,
+        intersect: false,
+        inverseOrder: false,
+        custom: undefined,
+        hideEmptySeries: true,
+        fillSeriesColor: false,
+        theme: false,
+        style: {
+          fontSize: '12px',
+          fontFamily: undefined,
+        },
+        onDatasetHover: {
+          highlightDataSeries: false,
+        },
+        x: {
+          show: true,
+          format: 'dd MMM',
+          formatter: undefined,
+        },
+        y: {
+          formatter: undefined,
+          title: {
+            formatter: (series) => series.name,
+          },
+        },
+        z: {
+          formatter: undefined,
+          title: 'Size: ',
+        },
+        marker: {
+          show: true,
+        },
+        fixed: {
+          enabled: false,
+          position: 'topRight',
+          offsetX: 0,
+          offsetY: 0,
+        },
       },
     },
+
     // The rest of your options object remains unchanged
   }
 

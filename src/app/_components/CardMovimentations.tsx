@@ -7,22 +7,36 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { ArrowUpRight } from 'lucide-react'
 import React from 'react'
 
-export const CardMovimentations = () => {
+type CardProps = {
+  cardtitle: string
+  carddescription: string
+  cardicon: React.ReactElement
+  cardvalue: string
+  cardbutton: string
+}
+
+export const CardMovimentations = ({
+  cardtitle,
+  carddescription,
+  cardicon,
+  cardvalue,
+  cardbutton,
+}: CardProps) => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Últimas movimentações</CardTitle>
-        <CardDescription>Ver todas</CardDescription>
+        <CardTitle>{cardtitle}</CardTitle>
+        <CardDescription>{carddescription}</CardDescription>
       </CardHeader>
       <CardContent className="flex items-center gap-2 text-emerald-500">
-        <ArrowUpRight size={24} />
-        <CardDescription className="text-3xl">R$ 1.000,00</CardDescription>
+        <span>{cardicon}</span>
+        {/* <ArrowUpRight size={24} /> */}
+        <CardDescription className="text-3xl">{cardvalue}</CardDescription>
       </CardContent>
       <CardFooter>
-        <Button variant={'outline'}>Ver todas</Button>
+        <Button variant={'outline'}>{cardbutton}</Button>
       </CardFooter>
     </Card>
   )

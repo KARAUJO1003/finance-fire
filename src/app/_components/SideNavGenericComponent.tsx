@@ -25,7 +25,7 @@ export const SideNav = ({ children, className }: SideNavGenericProps) => {
 
 export const SideNavHeader = ({ children, className }: SideNavGenericProps) => {
   return (
-    <div className={cn(['p-5 border-b flex justify-between'], className)}>
+    <div className={cn(['p-5 border-b flex items-center gap-2'], className)}>
       {children}
     </div>
   )
@@ -60,9 +60,10 @@ export const SideNavLink = ({
   return (
     <Link href={href} className={cn([''], className)}>
       <Button
-        variant={isActive ? 'outline' : 'link'}
-        size={'sm'}
-        className="justify-start w-full "
+        variant="link"
+        size={'default'}
+        className={`
+          ${isActive ? 'text-blue-600' : 'text-zinc-500'}   justify-start w-full`}
       >
         <span>{icon}</span>
         {children}
