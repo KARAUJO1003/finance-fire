@@ -28,7 +28,7 @@ export default function Dashboard() {
           cardbutton="Ver Detalhes"
         />
       </div>
-      <ApexChart />
+      {/* <ApexChart /> */}
     </div>
   )
 }
