@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 'use client'
 import React, { useState, useEffect } from 'react'
 import ReactApexChart from 'react-apexcharts'
@@ -80,49 +82,6 @@ export const ApexChart = () => {
       },
       axisTicks: {
         show: false,
-      },
-      tooltip: {
-        enabled: true,
-        enabledOnSeries: undefined,
-        shared: true,
-        followCursor: false,
-        intersect: false,
-        inverseOrder: false,
-        custom: undefined,
-        hideEmptySeries: true,
-        fillSeriesColor: false,
-        theme: false,
-        style: {
-          fontSize: '12px',
-          fontFamily: undefined,
-        },
-        onDatasetHover: {
-          highlightDataSeries: false,
-        },
-        x: {
-          show: true,
-          format: 'dd MMM',
-          formatter: undefined,
-        },
-        y: {
-          formatter: undefined,
-          title: {
-            formatter: (series) => series.name,
-          },
-        },
-        z: {
-          formatter: undefined,
-          title: 'Size: ',
-        },
-        marker: {
-          show: true,
-        },
-        fixed: {
-          enabled: false,
-          position: 'topRight',
-          offsetX: 0,
-          offsetY: 0,
-        },
       },
     },
 

@@ -14,14 +14,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { PlusIcon } from 'lucide-react'
 
 const formSchema = z.object({
@@ -56,7 +49,7 @@ export function FormCreate() {
               <span className="ml-2">Novo registro</span>
             </Button>
           </SheetTrigger>
-          <SheetContent>
+          <SheetContent side={'right'}>
             <FormField
               control={form.control}
               name="username"
