@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import Link from 'next/link'
 import React from 'react'
 
 type CardProps = {
@@ -15,6 +16,7 @@ type CardProps = {
   cardicon?: React.ReactElement
   cardvalue: string
   cardbutton: string
+  href: string
 }
 
 export const CardMovimentations = ({
@@ -23,6 +25,7 @@ export const CardMovimentations = ({
   cardicon,
   cardvalue,
   cardbutton,
+  href,
   ...rest
 }: CardProps & React.HTMLProps<HTMLDivElement>) => {
   return (
@@ -37,7 +40,9 @@ export const CardMovimentations = ({
         <CardDescription className="text-3xl">{cardvalue}</CardDescription>
       </CardContent>
       <CardFooter>
-        <Button variant={'outline'}>{cardbutton}</Button>
+        <Button variant={'outline'}>
+          <Link href={href}>{cardbutton}</Link>
+        </Button>
       </CardFooter>
     </Card>
   )

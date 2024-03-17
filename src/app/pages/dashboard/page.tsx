@@ -74,6 +74,7 @@ export default function Dashboard() {
           cardicon={<TrendingUp size={24} />}
           cardvalue="R$ 2.500,00"
           cardbutton="Explorar"
+          href="/pages/dashboard/ganhos"
         />
         <CardMovimentations
           cardtitle="Despesas do Mês"
@@ -81,6 +82,7 @@ export default function Dashboard() {
           cardicon={<TrendingDown size={24} color={'#EF4444'} />}
           cardvalue="R$ 1.200,00"
           cardbutton="Analisar"
+          href="/pages/dashboard/despesas"
         />
         <CardMovimentations
           cardtitle="Investimentos"
@@ -88,6 +90,7 @@ export default function Dashboard() {
           cardicon={<Activity size={24} color={'gray'} />}
           cardvalue="R$ 4.000,00"
           cardbutton="Ver Detalhes"
+          href="/pages/dashboard/investimentos"
         />
       </div>
       <div className="flex w-full  gap-5">
