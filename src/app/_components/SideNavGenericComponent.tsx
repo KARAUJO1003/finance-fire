@@ -58,12 +58,12 @@ export const SideNavLink = ({
 }: SideNavGenericProps<SideNavLinkProps>) => {
   const isActive = href === currentPath
   return (
-    <Link href={href} className={cn([''], className)}>
+    <Link href={href} className={cn(['outline-none'], className)}>
       <Button
         variant="link"
         size={'default'}
         className={`
-          ${isActive ? 'text-blue-600' : 'text-zinc-500'}   justify-start w-full`}
+          ${isActive ? 'text-blue-600' : 'text-zinc-500'} outline-none  justify-start w-full`}
       >
         <span>{icon}</span>
         {children}

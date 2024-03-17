@@ -1,103 +1,76 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 'use client'
-import React, { useState, useEffect } from 'react'
-import ReactApexChart from 'react-apexcharts'
-import { financialRecords } from '../../utils/db'
+import { financialRecords } from '@/utils/db'
+import { AreaChart, Card, List, ListItem } from '@tremor/react'
 
-interface SeriesData {
-  name: string
-  data: { x: Date; y: number }[]
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ')
 }
-export const ApexChart = () => {
-  const [series, setSeries] = useState<SeriesData[]>([
-    {
-      name: 'Income',
-      data: [],
-    },
-    {
-      name: 'Expense',
-      data: [],
-    },
-  ])
 
-  useEffect(() => {
-    const incomeData = financialRecords.map((record) => ({
-      x: record.incomeDate,
-      y: record.incomeAmount,
-    }))
+const data = financialRecords.map((record) => ({
+  date: record.incomeDate.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+  }),
+  Receita: record.incomeAmount > 0 ? record.incomeAmount : 0,
+  Despesa: record.expenseAmount < 0 ? Math.abs(record.expenseAmount) : 0,
+}))
 
-    const expenseData = financialRecords.map((record) => ({
-      x: record.expenseDate,
-      y: record.expenseAmount,
-    }))
+const summary = [
+  {
+    name: 'Receita',
+    value: data.reduce((acc, curr) => acc + curr.Receita, 0),
+  },
+  {
+    name: 'Despesa',
+    value: data.reduce((acc, curr) => acc + curr.Despesa, 0),
+  },
+]
 
-    setSeries([
-      { name: 'Receita', data: incomeData },
-      { name: 'Despesa', data: expenseData },
-    ])
-  }, [])
+const valueFormatter = (number: number) =>
+  `${Intl.NumberFormat('us').format(number).toString()}`
 
-  const options = {
-    series,
-    chart: {
-      type: 'area', // Specify the chart type explicitly
-      height: 350,
-      toolbar: {
-        show: true,
-        offsetX: 0,
-        offsetY: 0,
-        tools: {
-          download: false,
-          selection: false,
-          zoom: false,
-          zoomin: true,
-          zoomout: true,
-          pan: false,
-          reset: false,
-        },
-        export: {
-          show: false,
-        },
-        autoSelected: 'zoom',
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: 'straight',
-    },
-    title: {
-      text: 'Movimentações',
-      align: 'left',
-      style: {
-        fontSize: '14px',
-      },
-    },
-    xaxis: {
-      type: 'datetime', // Specify the axis type explicitly
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
-    },
+const statusColor: { [key: string]: string } = {
+  Receita: 'bg-blue-500',
+  Despesa: 'bg-violet-500',
+}
 
-    // The rest of your options object remains unchanged
-  }
-
+export default function CatdFinance() {
   return (
-    <div>
-      <div id="chart">
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="area"
-          height={350}
+    <>
+      <Card className="w-full">
+        <h3 className="font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
+          Follower metrics
+        </h3>
+        <AreaChart
+          data={data}
+          index="date"
+          categories={['Receita', 'Despesa']}
+          valueFormatter={valueFormatter}
+          colors={['blue', 'violet']}
+          showLegend={false}
+          showYAxis={false}
+          showGradient={true}
+          startEndOnly={true}
+          className=" h-48 w-full"
+          showGridLines={false}
         />
-      </div>
-    </div>
+        <List className="">
+          {summary.map((item) => (
+            <ListItem key={item.name}>
+              <div className="flex items-center space-x-2">
+                <span
+                  className={classNames(statusColor[item.name], 'h-0.5 w-3')}
+                  aria-hidden={true}
+                />
+                <span>{item.name}</span>
+              </div>
+              <span className="font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
+                {valueFormatter(item.value)}
+              </span>
+            </ListItem>
+          ))}
+        </List>
+      </Card>
+    </>
   )
 }

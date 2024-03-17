@@ -12,7 +12,7 @@ import React from 'react'
 type CardProps = {
   cardtitle: string
   carddescription: string
-  cardicon: React.ReactElement
+  cardicon?: React.ReactElement
   cardvalue: string
   cardbutton: string
 }
@@ -23,9 +23,10 @@ export const CardMovimentations = ({
   cardicon,
   cardvalue,
   cardbutton,
-}: CardProps) => {
+  ...rest
+}: CardProps & React.HTMLProps<HTMLDivElement>) => {
   return (
-    <Card className="w-full">
+    <Card className="w-full" {...rest}>
       <CardHeader>
         <CardTitle>{cardtitle}</CardTitle>
         <CardDescription>{carddescription}</CardDescription>
