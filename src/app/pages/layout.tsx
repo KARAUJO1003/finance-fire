@@ -6,10 +6,12 @@ export default function Layout({
   children,
 }: PropsWithChildren<{ children: ReactNode }>) {
   return (
-    <div className="h-screen w-full flex flex-col">
+    <div className="h-screen w-full flex flex-col ">
       <HeaderPages />
       <ScrollArea className="flex-1">
-        <main className="w-full px-10 py-5">{children}</main>
+        <main className="w-full px-10 py-5 max-md:p-5 h-screen">
+          {children}
+        </main>
         <ScrollBar orientation="vertical" />
       </ScrollArea>
     </div>

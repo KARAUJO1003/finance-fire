@@ -29,7 +29,7 @@ export const CardMovimentations = ({
   ...rest
 }: CardProps & React.HTMLProps<HTMLDivElement>) => {
   return (
-    <Card className="w-full" {...rest}>
+    <Card className="w-full " {...rest}>
       <CardHeader>
         <CardTitle>{cardtitle}</CardTitle>
         <CardDescription>{carddescription}</CardDescription>
@@ -37,10 +37,12 @@ export const CardMovimentations = ({
       <CardContent className="flex items-center gap-2 text-emerald-500">
         <span>{cardicon}</span>
         {/* <ArrowUpRight size={24} /> */}
-        <CardDescription className="text-3xl">{cardvalue}</CardDescription>
+        <CardDescription className="text-md lg:text-xl xl:text-3xl">
+          {cardvalue}
+        </CardDescription>
       </CardContent>
       <CardFooter>
-        <Button variant={'outline'}>
+        <Button variant={'outline'} size={'sm'}>
           <Link href={href}>{cardbutton}</Link>
         </Button>
       </CardFooter>

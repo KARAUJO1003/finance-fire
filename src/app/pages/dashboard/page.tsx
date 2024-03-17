@@ -67,11 +67,16 @@ export default function Dashboard() {
   }, [])
   return (
     <div className="flex flex-col gap-5 w-full">
-      <div className="flex gap-4 w-full" ref={cardRef01}>
+      <div className="flex gap-4 w-full max-md:flex-col" ref={cardRef01}>
         <CardMovimentations
           cardtitle="Ganhos Recentes"
           carddescription="Detalhes"
-          cardicon={<TrendingUp size={24} />}
+          cardicon={
+            <TrendingUp
+              size={24}
+              className="m-0 p-0 flex items-center justify-center"
+            />
+          }
           cardvalue="R$ 2.500,00"
           cardbutton="Explorar"
           href="/pages/dashboard/ganhos"
@@ -79,7 +84,13 @@ export default function Dashboard() {
         <CardMovimentations
           cardtitle="Despesas do Mês"
           carddescription="Ver Mais"
-          cardicon={<TrendingDown size={24} color={'#EF4444'} />}
+          cardicon={
+            <TrendingDown
+              size={24}
+              color={'#EF4444'}
+              className="m-0 p-0 flex items-center justify-center "
+            />
+          }
           cardvalue="R$ 1.200,00"
           cardbutton="Analisar"
           href="/pages/dashboard/despesas"
@@ -87,18 +98,24 @@ export default function Dashboard() {
         <CardMovimentations
           cardtitle="Investimentos"
           carddescription="Performance"
-          cardicon={<Activity size={24} color={'gray'} />}
+          cardicon={
+            <Activity
+              size={24}
+              color={'gray'}
+              className="m-0 p-0 flex items-center justify-center"
+            />
+          }
           cardvalue="R$ 4.000,00"
           cardbutton="Ver Detalhes"
           href="/pages/dashboard/investimentos"
         />
       </div>
-      <div className="flex w-full  gap-5">
+      <div className="flex w-full gap-5 max-md:flex-col-reverse">
         <ScrollArea className="w-full rounded-md border" ref={cardRef02}>
           <DataTable
             columns={columns}
             data={data}
-            className="w-full  p-5 max-h-[350px] "
+            className="w-full  p-5 max-h-[350px] max-md:hidden"
           />
           <ScrollBar orientation="vertical" />
         </ScrollArea>

@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <main className="h-screen w-full px-10 py-5 flex flex-col">
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-end max-md:hidden">
         <Button variant={'secondary'}>
           <Link href={'pages/dashboard'}>Dashboard</Link>
         </Button>
@@ -40,9 +40,9 @@ export default function Home() {
 
         <Link
           href={'pages/dashboard'}
-          className="flex gap-2 items-center text-muted-foreground"
+          className="flex gap-2 items-start text-muted-foreground max-md:text-xs w-full"
         >
-          <span>Clique aqui para continuar</span>Dashboard
+          <span>Clique aqui para continuar</span>
           <ArrowRight size={18} />
         </Link>
       </div>
