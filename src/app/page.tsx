@@ -4,21 +4,25 @@ import gsap from 'gsap'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
 export default function Home() {
   const textTitle = useRef(null)
-  gsap.fromTo(
-    textTitle.current,
-    { opacity: 0 },
-    {
-      // y: 0,
-      opacity: 1,
-      duration: 3,
-      yoyo: true,
-      repeat: 1,
-      ease: 'back.in',
-    },
-  )
+  useGSAP(() => {
+    gsap.fromTo(
+      textTitle.current,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 3,
+        yoyo: true,
+        repeat: -1,
+        ease: 'back.out',
+      },
+    )
+  })
+
   return (
     <main className="h-screen w-full px-10 py-5 flex flex-col">
       <div className="w-full flex justify-end">
