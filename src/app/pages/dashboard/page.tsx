@@ -115,11 +115,11 @@ export default function Dashboard() {
           <DataTable
             columns={columns}
             data={data}
-            className="w-full  p-5 max-h-[350px] max-md:pb-10 max-md:hidden"
+            className="w-full  p-5 max-h-[350px]  max-md:hidden"
           />
           <ScrollBar orientation="vertical" />
         </ScrollArea>
-        <Card className="w-full" ref={cardRef03}>
+        <Card className="w-full max-md:mb-10" ref={cardRef03}>
           <CatdFinance />
         </Card>
       </div>
