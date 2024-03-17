@@ -115,7 +115,7 @@ export default function Dashboard() {
           <DataTable
             columns={columns}
             data={data}
-            className="w-full  p-5 max-h-[350px] max-md:hidden"
+            className="w-full  p-5 max-h-[350px] max-md:pb-10 max-md:hidden"
           />
           <ScrollBar orientation="vertical" />
         </ScrollArea>

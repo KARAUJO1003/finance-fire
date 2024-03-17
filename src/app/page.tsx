@@ -40,7 +40,7 @@ export default function Home() {
 
         <Link
           href={'pages/dashboard'}
-          className="flex gap-2 items-start text-muted-foreground max-md:text-xs w-full"
+          className="flex gap-2 items-center text-muted-foreground max-md:text-xs max-md:w-full"
         >
           <span>Clique aqui para continuar</span>
           <ArrowRight size={18} />
