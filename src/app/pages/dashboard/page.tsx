@@ -74,6 +74,7 @@ export default function Dashboard() {
           cardicon={
             <WalletCards
               size={20}
+color={'gray'}
               className="m-0 p-0 flex items-center justify-center"
             />
           }
