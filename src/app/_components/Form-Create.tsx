@@ -1,5 +1,4 @@
 'use client'
-
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import {
@@ -21,6 +20,12 @@ const formSchema = z.object({
   username: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
+  incomeAmount: z.number(),
+  expenseAmount: z.number(),
+  incomeDate: z.date(),
+  expenseDate: z.date(),
+  goalAmount: z.number(),
+  goalDate: z.date(),
 })
 
 export function FormCreate() {
@@ -29,6 +34,12 @@ export function FormCreate() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: '',
+      incomeAmount: 0,
+      expenseAmount: 0,
+      incomeDate: new Date(),
+      expenseDate: new Date(),
+      goalAmount: 0,
+      goalDate: new Date(),
     },
   })
 
@@ -52,20 +63,71 @@ export function FormCreate() {
           <SheetContent side={'right'}>
             <FormField
               control={form.control}
-              name="username"
+              name="incomeAmount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Income Amount</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="0" {...field} />
+                  </FormControl>
+                  <FormDescription>Enter your income amount.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="expenseAmount"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Expense Amount</FormLabel>
+                  <FormControl>
+                    <Input placeholder="0" {...field} />
+                  </FormControl>
+                  <FormDescription>Enter your expense amount.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="incomeDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Income Date</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="date"
+                      onChange={(e) => field.onChange(new Date(e.target.value))}
+                    />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name.
+                    Select the date of your income.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="expenseDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Expense Date</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="date"
+                      onChange={(e) => field.onChange(new Date(e.target.value))}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    Select the date of your expense.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <Button type="submit">Submit</Button>
           </SheetContent>
         </Sheet>
