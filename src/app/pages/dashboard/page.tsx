@@ -9,7 +9,7 @@ import { DataTable } from '@/app/_components/movimentations/data-table'
 import { Card } from '@/components/ui/card'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { financialRecords } from '@/utils/db'
-import { Activity, TrendingDown, TrendingUp } from 'lucide-react'
+import { Activity, TrendingDown, TrendingUp, WalletCards } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
@@ -72,7 +72,7 @@ export default function Dashboard() {
           cardtitle="Saldo do mês"
           carddescription="Detalhes"
           cardicon={
-            <TrendingUp
+            <WalletCards
               size={20}
               className="m-0 p-0 flex items-center justify-center"
             />
