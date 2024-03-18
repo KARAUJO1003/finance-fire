@@ -43,11 +43,11 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '4',
     userId: 'BobJohnson',
-    incomeAmount: -3500,
+    incomeAmount: -300,
     expenseAmount: 2500,
     incomeDate: new Date('2023-04-01'),
     expenseDate: new Date('2023-04-15'),
-    goalAmount: 8000,
+    goalAmount: -8000,
     goalDate: new Date('2023-09-01'),
   },
   {
@@ -63,7 +63,7 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '6',
     userId: 'MichaelBrown',
-    incomeAmount: 1500,
+    incomeAmount: 500,
     expenseAmount: -1000,
     incomeDate: new Date('2023-06-01'),
     expenseDate: new Date('2023-06-15'),
@@ -73,7 +73,7 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '7',
     userId: 'SarahDavis',
-    incomeAmount: 1800,
+    incomeAmount: 180,
     expenseAmount: -1200,
     incomeDate: new Date('2023-07-01'),
     expenseDate: new Date('2023-07-15'),
@@ -103,7 +103,7 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '10',
     userId: 'JamesRodriguez',
-    incomeAmount: 3200,
+    incomeAmount: 320,
     expenseAmount: -2700,
     incomeDate: new Date('2023-10-01'),
     expenseDate: new Date('2023-10-15'),
@@ -124,7 +124,7 @@ export const financialRecords: FinancialRecord[] = [
     id: '12',
     userId: 'DanielYoung',
     incomeAmount: 3800,
-    expenseAmount: -3300,
+    expenseAmount: 300,
     incomeDate: new Date('2023-12-01'),
     expenseDate: new Date('2023-12-15'),
     goalAmount: 9800,
@@ -163,7 +163,7 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '16',
     userId: 'DavidMartinez',
-    incomeAmount: 5000,
+    incomeAmount: 3000,
     expenseAmount: -4500,
     incomeDate: new Date('2024-04-01'),
     expenseDate: new Date('2024-04-15'),
@@ -173,7 +173,7 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '17',
     userId: 'MiaLopez',
-    incomeAmount: 5300,
+    incomeAmount: 530,
     expenseAmount: -4800,
     incomeDate: new Date('2024-05-01'),
     expenseDate: new Date('2024-05-15'),
@@ -183,7 +183,7 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '18',
     userId: 'EthanYoung',
-    incomeAmount: 5600,
+    incomeAmount: 5100,
     expenseAmount: -5100,
     incomeDate: new Date('2024-06-01'),
     expenseDate: new Date('2024-06-15'),
@@ -193,7 +193,7 @@ export const financialRecords: FinancialRecord[] = [
   {
     id: '19',
     userId: 'AvaHernandez',
-    incomeAmount: 5900,
+    incomeAmount: 5100,
     expenseAmount: -5400,
     incomeDate: new Date('2024-07-01'),
     expenseDate: new Date('2024-07-15'),
