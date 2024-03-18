@@ -1,4 +1,4 @@
-'use client'
+9'use client'
 import { CardMovimentations } from '@/app/_components/CardMovimentations'
 import CatdFinance from '@/app/_components/ChartFinance'
 import {
@@ -74,7 +74,7 @@ export default function Dashboard() {
           cardicon={
             <WalletCards
               size={20}
-color={'gray'}
+              color={'gray'}
               className="m-0 p-0 flex items-center justify-center"
             />
           }
