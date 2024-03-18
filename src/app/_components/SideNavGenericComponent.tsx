@@ -72,7 +72,7 @@ export const SideNavLink = ({
       href={href}
       className={cn(
         [
-          `${buttonVariants({ variant: isActive ? 'default' : 'secondary' })} hover:no-underline max-md:p-0`,
+          `${buttonVariants({ variant: isActive ? 'default' : 'link' })} hover:no-underline max-md:p-0`,
         ],
         className,
       )}
