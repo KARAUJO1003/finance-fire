@@ -69,15 +69,28 @@ export default function Dashboard() {
     <div className="flex flex-col gap-5 w-full">
       <div className="flex gap-4 w-full max-md:flex-col" ref={cardRef01}>
         <CardMovimentations
+          cardtitle="Saldo do mês"
+          carddescription="Detalhes"
+          cardicon={
+            <TrendingUp
+              size={20}
+              className="m-0 p-0 flex items-center justify-center"
+            />
+          }
+          cardvalue={`R$ ${financialRecords.reduce((acc, curr) => acc + (curr.incomeAmount + curr.expenseAmount), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
+          cardbutton="Explorar"
+          href="/pages/dashboard/ganhos"
+        />
+        <CardMovimentations
           cardtitle="Ganhos Recentes"
           carddescription="Detalhes"
           cardicon={
             <TrendingUp
-              size={24}
+              size={20}
               className="m-0 p-0 flex items-center justify-center"
             />
           }
-          cardvalue="R$ 2.500,00"
+          cardvalue={`R$ ${financialRecords.reduce((acc, curr) => acc + curr.incomeAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
           cardbutton="Explorar"
           href="/pages/dashboard/ganhos"
         />
@@ -86,26 +99,26 @@ export default function Dashboard() {
           carddescription="Ver Mais"
           cardicon={
             <TrendingDown
-              size={24}
+              size={20}
               color={'#EF4444'}
               className="m-0 p-0 flex items-center justify-center "
             />
           }
-          cardvalue="R$ 1.200,00"
+          cardvalue={`R$ ${financialRecords.reduce((acc, curr) => acc + curr.expenseAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
           cardbutton="Analisar"
           href="/pages/dashboard/despesas"
         />
         <CardMovimentations
-          cardtitle="Investimentos"
+          cardtitle="Meta"
           carddescription="Performance"
           cardicon={
             <Activity
-              size={24}
+              size={20}
               color={'gray'}
               className="m-0 p-0 flex items-center justify-center"
             />
           }
-          cardvalue="R$ 4.000,00"
+          cardvalue={`R$ ${financialRecords.reduce((acc, curr) => acc + curr.goalAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
           cardbutton="Ver Detalhes"
           href="/pages/dashboard/investimentos"
         />

@@ -37,7 +37,7 @@ export const CardMovimentations = ({
       <CardContent className="flex items-center gap-2 text-emerald-500">
         <span>{cardicon}</span>
         {/* <ArrowUpRight size={24} /> */}
-        <CardDescription className="text-md lg:text-xl xl:text-3xl">
+        <CardDescription className="text-md lg:text-xl xl:text-2xl">
           {cardvalue}
         </CardDescription>
       </CardContent>

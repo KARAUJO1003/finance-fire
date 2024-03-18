@@ -46,7 +46,7 @@ export default function CatdFinance() {
           index="date"
           categories={['Receita', 'Despesa']}
           valueFormatter={valueFormatter}
-          colors={['blue', 'violet']}
+          colors={Object.values(statusColor)}
           showLegend={false}
           showYAxis={false}
           showGradient={true}
