@@ -62,7 +62,7 @@ export function FormCreate({ className }: Props) {
           <SheetTrigger asChild>
             <Button className={cn([` max-[375px]:p-2.5`], className)}>
               <PlusIcon size={18} />
-              <span className="ml-2 max-[375px]:hidden">Novo registro</span>
+              <span className="ml-2 max-[375px]:hidden">New register</span>
             </Button>
           </SheetTrigger>
           <SheetContent side={'right'}>
