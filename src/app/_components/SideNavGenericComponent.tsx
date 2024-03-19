@@ -84,7 +84,7 @@ export const SideNavLink = ({
         variant="link"
         size={'default'}
         className={`
-           hover:no-underline justify-start w-full max-md:hidden`}
+           hover:no-underline pl-0 justify-start w-full max-md:hidden`}
       >
         {children}
       </Button>
