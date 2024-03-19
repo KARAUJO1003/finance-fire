@@ -51,21 +51,21 @@ export const SideBarNav = () => {
           href="/pages/dashboard/ganhos"
           currentPath={pathname}
         >
-          Receita
+          Incomes
         </SideNavLink>
         <SideNavLink
           icon={<TrendingDown size={14} className="mr-2 max-md:m-0" />}
           href="/pages/dashboard/despesas"
           currentPath={pathname}
         >
-          Despesa
+          Expenses
         </SideNavLink>
         <SideNavLink
           icon={<Activity size={14} className="mr-2 max-md:m-0" />}
           href="/pages/dashboard/investimentos"
           currentPath={pathname}
         >
-          Investimentos
+          Goal
         </SideNavLink>
         <SideNavLink
           icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
