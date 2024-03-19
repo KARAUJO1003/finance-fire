@@ -1,4 +1,4 @@
-9'use client'
+'use client'
 import { CardMovimentations } from '@/app/_components/CardMovimentations'
 import CatdFinance from '@/app/_components/ChartFinance'
 import {
@@ -74,7 +74,7 @@ export default function Dashboard() {
           cardicon={
             <WalletCards
               size={20}
-              color={'gray'}
+              color="gray"
               className="m-0 p-0 flex items-center justify-center"
             />
           }
@@ -87,6 +87,7 @@ export default function Dashboard() {
           carddescription="Detalhes"
           cardicon={
             <TrendingUp
+              color="#01a176"
               size={20}
               className="m-0 p-0 flex items-center justify-center"
             />
@@ -101,7 +102,7 @@ export default function Dashboard() {
           cardicon={
             <TrendingDown
               size={20}
-              color={'#EF4444'}
+              color={'#e11d48'}
               className="m-0 p-0 flex items-center justify-center "
             />
           }
@@ -115,7 +116,7 @@ export default function Dashboard() {
           cardicon={
             <Activity
               size={20}
-              color={'gray'}
+              color="gray"
               className="m-0 p-0 flex items-center justify-center"
             />
           }
