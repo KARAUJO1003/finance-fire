@@ -67,7 +67,10 @@ export default function Dashboard() {
   }, [])
   return (
     <div className="flex flex-col gap-5 w-full">
-      <div className="flex gap-4 w-full max-md:flex-col" ref={cardRef01}>
+      <div
+        className=" gap-4 w-full grid grid-cols-4 max-[1186px]:grid-cols-2 max-[425px]:grid-cols-1"
+        ref={cardRef01}
+      >
         <CardMovimentations
           cardtitle="Saldo do mês"
           carddescription="Detalhes"
@@ -125,7 +128,7 @@ export default function Dashboard() {
           href="/pages/dashboard/investimentos"
         />
       </div>
-      <div className="flex w-full gap-5 max-md:flex-col-reverse">
+      <div className="grid grid-cols-2 w-full gap-5 max-lg:grid-cols-1 ">
         <ScrollArea className="w-full rounded-md border" ref={cardRef02}>
           <DataTable
             columns={columns}
