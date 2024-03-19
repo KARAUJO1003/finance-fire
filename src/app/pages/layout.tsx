@@ -9,7 +9,7 @@ export default function Layout({
     <div className="h-screen w-full flex flex-col ">
       <HeaderPages />
       <ScrollArea className="flex-1">
-        <main className="w-full px-10 py-5 max-md:p-5 h-screen">
+        <main className="w-full px-10 py-5 max-md:p-5 max-sm:px-3  h-screen">
           {children}
         </main>
         <ScrollBar orientation="vertical" />
