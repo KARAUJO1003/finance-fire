@@ -15,6 +15,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { PlusIcon } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -28,7 +29,11 @@ const formSchema = z.object({
   goalDate: z.date(),
 })
 
-export function FormCreate() {
+type Props = {
+  className?: string
+}
+
+export function FormCreate({ className }: Props) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -55,9 +60,9 @@ export function FormCreate() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <Sheet>
           <SheetTrigger asChild>
-            <Button>
+            <Button className={cn([` max-[375px]:p-2.5`], className)}>
               <PlusIcon size={18} />
-              <span className="ml-2">Novo registro</span>
+              <span className="ml-2 max-[375px]:hidden">Novo registro</span>
             </Button>
           </SheetTrigger>
           <SheetContent side={'right'}>
