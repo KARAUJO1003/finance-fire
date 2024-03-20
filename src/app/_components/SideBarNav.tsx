@@ -19,9 +19,12 @@ import { usePathname } from 'next/navigation'
 import financefire from '../../../public/financefire.png'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { useSession } from 'next-auth/react'
 
 export const SideBarNav = () => {
   const pathname = usePathname()
+  const { status } = useSession()
 
   return (
     <SideNav className="border-border ">
@@ -39,41 +42,71 @@ export const SideBarNav = () => {
         >
           Home
         </SideNavLink>
-        <SideNavLink
-          icon={<LayoutDashboard size={14} className="mr-2 max-md:m-0" />}
-          href="/pages/dashboard"
-          currentPath={pathname}
+        <Button
+          disabled={status === 'unauthenticated'}
+          className="hover:no-underline p-0 justify-start"
+          variant={'link'}
         >
-          Dashboard
-        </SideNavLink>
-        <SideNavLink
-          icon={<TrendingUp size={14} className="mr-2 max-md:m-0" />}
-          href="/pages/dashboard/ganhos"
-          currentPath={pathname}
+          <SideNavLink
+            icon={<LayoutDashboard size={14} className="mr-2 max-md:m-0" />}
+            href="/pages/dashboard"
+            currentPath={pathname}
+          >
+            Dashboard
+          </SideNavLink>
+        </Button>
+        <Button
+          disabled={status === 'unauthenticated'}
+          className="hover:no-underline p-0  justify-start"
+          variant={'link'}
         >
-          Incomes
-        </SideNavLink>
-        <SideNavLink
-          icon={<TrendingDown size={14} className="mr-2 max-md:m-0" />}
-          href="/pages/dashboard/despesas"
-          currentPath={pathname}
+          <SideNavLink
+            icon={<TrendingUp size={14} className="mr-2 max-md:m-0" />}
+            href="/pages/dashboard/ganhos"
+            currentPath={pathname}
+          >
+            Incomes
+          </SideNavLink>
+        </Button>
+        <Button
+          disabled={status === 'unauthenticated'}
+          className="hover:no-underline p-0  justify-start"
+          variant={'link'}
         >
-          Expenses
-        </SideNavLink>
-        <SideNavLink
-          icon={<Activity size={14} className="mr-2 max-md:m-0" />}
-          href="/pages/dashboard/investimentos"
-          currentPath={pathname}
+          <SideNavLink
+            icon={<TrendingDown size={14} className="mr-2 max-md:m-0" />}
+            href="/pages/dashboard/despesas"
+            currentPath={pathname}
+          >
+            Expenses
+          </SideNavLink>
+        </Button>
+        <Button
+          disabled={status === 'unauthenticated'}
+          className="hover:no-underline p-0  justify-start"
+          variant={'link'}
         >
-          Goal
-        </SideNavLink>
-        <SideNavLink
-          icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
-          href="/pages/details"
-          currentPath={pathname}
+          <SideNavLink
+            icon={<Activity size={14} className="mr-2 max-md:m-0" />}
+            href="/pages/dashboard/investimentos"
+            currentPath={pathname}
+          >
+            Goal
+          </SideNavLink>
+        </Button>
+        <Button
+          disabled={status === 'unauthenticated'}
+          className="hover:no-underline p-0  justify-start"
+          variant={'link'}
         >
-          Overview
-        </SideNavLink>
+          <SideNavLink
+            icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
+            href="/pages/details"
+            currentPath={pathname}
+          >
+            Overview
+          </SideNavLink>
+        </Button>
       </SideNavContent>
       <SideNavFooter>Footer</SideNavFooter>
     </SideNav>

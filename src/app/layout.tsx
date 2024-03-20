@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SideBarNav } from './_components/SideBarNav'
 import { AuthProvider } from '@/providers/auth'
+import { Toaster } from '@/components/ui/sonner'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           >
             <SideBarNav />
             {children}
+            <Toaster />
           </ThemeProvider>
         </AuthProvider>
       </body>
