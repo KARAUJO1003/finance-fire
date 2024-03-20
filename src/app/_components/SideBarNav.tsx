@@ -61,7 +61,7 @@ export const SideBarNav = () => {
           variant={'link'}
         >
           <SideNavLink
-            icon={<TrendingUp size={14} className="mr-2 max-md:m-0" />}
+            icon={<TrendingUp size={14} className="mr-2 max-md:m-0 " />}
             href="/pages/dashboard/ganhos"
             currentPath={pathname}
           >
@@ -92,6 +92,19 @@ export const SideBarNav = () => {
             currentPath={pathname}
           >
             Goal
+          </SideNavLink>
+        </Button>
+        <Button
+          disabled={status === 'unauthenticated'}
+          className="hover:no-underline p-0  justify-start"
+          variant={'link'}
+        >
+          <SideNavLink
+            icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
+            href="/pages/categories"
+            currentPath={pathname}
+          >
+            Categories
           </SideNavLink>
         </Button>
         <Button

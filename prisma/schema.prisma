@@ -16,11 +16,15 @@ datasource db {
 model Category {
   id         String     @id @default(auto()) @map("_id") @db.ObjectId
   name       String
+  color      String?
   created_at DateTime?  @default(now())
   updated_at DateTime?  @default(now())
   incomes    Incomes[]
   expenses   Expenses[]
   Goal       Goal[]
+
+  userId String? @db.ObjectId
+  user   User?   @relation(fields: [userId], references: [id])
 }
 
 model Incomes {
@@ -109,6 +113,7 @@ model User {
   incomes       Incomes[]
   expenses      Expenses[]
   Goal          Goal[]
+  Category      Category[]
 }
 
 model VerificationToken {
