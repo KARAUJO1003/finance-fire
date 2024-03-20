@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
@@ -72,22 +72,19 @@ export const SideNavLink = ({
       href={href}
       className={cn(
         [
-          `${buttonVariants({ variant: isActive ? 'default' : 'link' })} hover:no-underline max-md:p-0`,
+          `${buttonVariants({ variant: isActive ? 'default' : 'link' })} hover:no-underline max-md:p-2.5`,
         ],
         className,
       )}
     >
-      <Button size={'icon'} variant={'link'}>
-        <span className="flex items-center justify-center m-0 p-0">{icon}</span>
-      </Button>
-      <Button
-        variant="link"
-        size={'default'}
+      <span className="flex items-center justify-center m-0 p-0">{icon}</span>
+
+      <span
         className={`
            hover:no-underline pl-0 justify-start w-full max-md:hidden`}
       >
         {children}
-      </Button>
+      </span>
     </Link>
   )
 }
