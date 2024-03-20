@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SideBarNav } from './_components/SideBarNav'
+import { AuthProvider } from '@/providers/auth'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,15 +20,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={(inter.className, 'flex ')}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SideBarNav />
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SideBarNav />
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )

@@ -4,9 +4,23 @@ import { usePathname } from 'next/navigation'
 import { FormCreate } from './Form-Create'
 import financefire from '../../../public/financefire.png'
 import Image from 'next/image'
+import { signIn, signOut, useSession } from 'next-auth/react'
+import { Button } from '@/components/ui/button'
+import { Loader } from 'lucide-react'
 
 export const HeaderPages = () => {
   const pathname = usePathname()
+
+  const handleSignIn = async () => {
+    await signIn()
+  }
+
+  const handleSignOut = async () => {
+    await signOut()
+  }
+
+  const { status } = useSession()
+
   return (
     <header className="p-5 w-full flex justify-between items-center px-10 max-md:p-5 max-md:py-2 backdrop-blur-sm bg-opacity-30 ">
       <div className="flex items-center gap-2">
@@ -17,7 +31,25 @@ export const HeaderPages = () => {
       </div>
       <div className="flex items-center space-x-5">
         <FormCreate />
-        <span className="max-sm:hidden">Sair</span>
+        {status === 'loading' && <Loader className="animate-spin" />}
+        {status === 'unauthenticated' && (
+          <Button
+            onClick={handleSignIn}
+            variant={'ghost'}
+            className="max-sm:hidden"
+          >
+            Entrar
+          </Button>
+        )}
+        {status === 'authenticated' && (
+          <Button
+            onClick={handleSignOut}
+            variant={'ghost'}
+            className="max-sm:hidden"
+          >
+            Sair
+          </Button>
+        )}
       </div>
     </header>
   )
