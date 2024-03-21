@@ -38,11 +38,15 @@ import Link from 'next/link'
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  urlpage: string
+  amount: string
 }
 
 export function DataTableDemo<TData, TValue>({
   columns,
   data,
+  urlpage,
+  amount,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -75,12 +79,10 @@ export function DataTableDemo<TData, TValue>({
     <div className="w-full max-sm:pb-12">
       <div className="flex items-center justify-between py-4 gap-2">
         <Input
-          placeholder="Filtrar por valor de redimentos..."
-          value={
-            (table.getColumn('incomeAmount')?.getFilterValue() as string) ?? ''
-          }
+          placeholder="Filtrar por valor ..."
+          value={(table.getColumn(amount)?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
-            table.getColumn('incomeAmount')?.setFilterValue(event.target.value)
+            table.getColumn(amount)?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -113,7 +115,7 @@ export function DataTableDemo<TData, TValue>({
           </DropdownMenu>
           <Link
             className={buttonVariants({ variant: 'default' })}
-            href="/pages/dashboard/ganhos/novo"
+            href={`/pages/dashboard/${urlpage}/new`}
           >
             Criar novo
           </Link>

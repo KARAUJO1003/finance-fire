@@ -32,7 +32,7 @@ model Incomes {
   incomeAmount String
   incomeDate   String?
   description  String?
-  status       String
+  status       String?
   created_at   DateTime? @default(now())
   updated_at   DateTime? @default(now())
 
@@ -48,7 +48,7 @@ model Goal {
   goalAmount  String
   goalDate    String?
   description String?
-  status      String
+  status      String?
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())
 
@@ -62,9 +62,9 @@ model Goal {
 model Expenses {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   expenseAmount String
-  incomeDate    String?
+  expenseDate   String?
   description   String?
-  status        String
+  status        String?
   created_at    DateTime? @default(now())
   updated_at    DateTime? @default(now())
 

@@ -18,36 +18,39 @@ import { authOptions } from '@/lib/auth'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 
-export const FormIncomes = async () => {
+type FormExpensesProps = {
+  urlPage: string
+}
+
+export const FormExpenses = async ({ urlPage }: FormExpensesProps) => {
   const session = await getServerSession(authOptions)
   async function handleSumbmit(formData: FormData) {
     'use server'
     // console.log(formData)
-
-    const incomeAmount = formData.get('incomeAmount') as string
-    const incomeDate = formData.get('incomeDate') as string
+    const amount = formData.get('amount') as string
+    const date = formData.get('date') as string
     const status = formData.get('status') as string
     const categoryId = formData.get('categoryId') as string
     const description = formData.get('description') as string
 
-    await prisma.incomes.create({
+    await prisma.expenses.create({
       data: {
-        incomeAmount,
-        incomeDate,
+        expenseAmount: amount,
+        expenseDate: date,
         status,
         categoryId,
         description,
         userId: session?.user.id,
       },
     })
-    redirect('/pages/dashboard/ganhos')
+    redirect(`/pages/dashboard/${urlPage}`)
   }
 
   const categories = await prisma.category.findMany()
 
   return (
     <form action={handleSumbmit}>
-      <div className="flex flex-col items-center gap-3">
+      <div className=" flex flex-col items-center gap-3">
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
           <Label>Titulo</Label>
           <Input
@@ -57,19 +60,24 @@ export const FormIncomes = async () => {
         </div>
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
           <Label>Valor</Label>
-          <Input placeholder="R$" name="incomeAmount" />
+          <Input placeholder="R$" name="amount" />
         </div>
 
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
           <Label>Data</Label>
-          <Input name="incomeDate" type="date" />
+          <Input name="date" type="date" />
+        </div>
+
+        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+          <Label>Status</Label>
+          <Input name="status" placeholder="Digite um status.." />
         </div>
 
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
           <Label>Categoria</Label>
           <Select name="categoryId">
             <SelectTrigger>
-              <SelectValue placeholder="Selecione uma opção..." />
+              <SelectValue placeholder="Selecione uma opção" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -90,6 +98,7 @@ export const FormIncomes = async () => {
             placeholder="Descreva sobre seu registro..."
           />
         </div>
+
         <div className="w-[700px] flex justify-end">
           <Button className="w-[600px] mt-5 " type="submit">
             Cadastrar

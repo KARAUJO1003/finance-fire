@@ -126,7 +126,7 @@ export const CardsDashboard = () => {
           }
           cardvalue={`R$ ${financialRecords.reduce((acc, curr) => acc + curr.goalAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
           cardbutton="Ver Detalhes"
-          href="/pages/dashboard/investimentos"
+          href="/pages/dashboard/metas"
         />
       </div>
       <div className="grid grid-cols-2 w-full gap-5 max-lg:grid-cols-1 ">
