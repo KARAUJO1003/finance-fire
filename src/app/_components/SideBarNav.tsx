@@ -112,19 +112,6 @@ export const SideBarNav = () => {
             Categorias
           </SideNavLink>
         </Button>
-        <Button
-          disabled={status === 'unauthenticated'}
-          className="hover:no-underline p-0  justify-start"
-          variant={'link'}
-        >
-          <SideNavLink
-            icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
-            href="/pages/detalhes"
-            currentPath={pathname}
-          >
-            Visão Geral
-          </SideNavLink>
-        </Button>
       </SideNavContent>
       <SideNavFooter>Rodapé</SideNavFooter>
     </SideNav>
