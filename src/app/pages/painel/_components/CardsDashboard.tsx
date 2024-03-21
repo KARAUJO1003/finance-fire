@@ -1,6 +1,6 @@
 'use client'
-import { CardMovimentations } from '@/app/pages/dashboard/_components/CardMovimentationsItems'
-import CatdFinance from '@/app/pages/dashboard/_components/ChartFinance'
+import { CardMovimentations } from '@/app/pages/painel/_components/CardMovimentationsItems'
+import CatdFinance from '@/app/pages/painel/_components/ChartFinance'
 import {
   FinancialRecord,
   columns,
@@ -83,7 +83,7 @@ export const CardsDashboard = () => {
             />
           }
           cardvalue={`R$ ${financialRecords.reduce((acc, curr) => acc + (curr.incomeAmount + curr.expenseAmount), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
-          cardbutton="Explorar"
+          cardbutton="Ver mais"
           href="/pages/dashboard/ganhos"
         />
         <CardMovimentations

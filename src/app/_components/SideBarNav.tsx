@@ -54,7 +54,7 @@ export const SideBarNav = () => {
         >
           <SideNavLink
             icon={<LayoutDashboard size={14} className="mr-2 max-md:m-0 " />}
-            href="/pages/dashboard"
+            href="/pages/painel"
             currentPath={pathname}
           >
             Painel
@@ -67,7 +67,7 @@ export const SideBarNav = () => {
         >
           <SideNavLink
             icon={<TrendingUp size={14} className="mr-2 max-md:m-0 " />}
-            href="/pages/dashboard/ganhos"
+            href="/pages/painel/ganhos"
             currentPath={pathname}
           >
             Rendimentos
@@ -80,7 +80,7 @@ export const SideBarNav = () => {
         >
           <SideNavLink
             icon={<TrendingDown size={14} className="mr-2 max-md:m-0" />}
-            href="/pages/dashboard/despesas"
+            href="/pages/painel/despesas"
             currentPath={pathname}
           >
             Despesas
@@ -93,7 +93,7 @@ export const SideBarNav = () => {
         >
           <SideNavLink
             icon={<Activity size={14} className="mr-2 max-md:m-0" />}
-            href="/pages/dashboard/metas"
+            href="/pages/painel/metas"
             currentPath={pathname}
           >
             Meta
@@ -106,7 +106,7 @@ export const SideBarNav = () => {
         >
           <SideNavLink
             icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
-            href="/pages/categories"
+            href="/pages/categorias"
             currentPath={pathname}
           >
             Categorias
@@ -119,7 +119,7 @@ export const SideBarNav = () => {
         >
           <SideNavLink
             icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
-            href="/pages/details"
+            href="/pages/detalhes"
             currentPath={pathname}
           >
             Visão Geral

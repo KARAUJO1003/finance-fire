@@ -8,7 +8,7 @@ export default function Home() {
     <main className="h-screen w-full px-10 py-5 flex flex-col">
       <div className="w-full flex justify-end gap-3 max-md:hidden">
         <Button variant={'secondary'}>
-          <Link href={'pages/dashboard'}>Dashboard</Link>
+          <Link href={'pages/painel'}>Painel</Link>
         </Button>
         <ButtonLogin />
       </div>

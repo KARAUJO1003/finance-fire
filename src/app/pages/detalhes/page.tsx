@@ -16,7 +16,12 @@ export default async function Details() {
 
   return (
     <div>
-      <DataTableDemo columns={columns} data={data} />
+      <DataTableDemo
+        amount="incomeAmount"
+        urlpage="ganhos"
+        columns={columns}
+        data={data}
+      />
     </div>
   )
 }

@@ -49,7 +49,7 @@ export const NewCatergoyForm = () => {
     <div>
       <Sheet>
         <SheetTrigger asChild>
-          <Button>New category</Button>
+          <Button>Nova categoria</Button>
         </SheetTrigger>
         <SheetContent className="max-sm:w-full">
           <Form {...form}>
