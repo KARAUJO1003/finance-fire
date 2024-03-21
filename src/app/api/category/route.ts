@@ -29,3 +29,24 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: 'Error ao cadastrar' }, { status: 400 })
   }
 }
+export async function DELETE(req: Request) {
+  // const session = await getServerSession(authOptions)
+  // if (!session || !session.user) {
+  //   return NextResponse.json({ message: 'Não autorizado' }, { status: 401 })
+  // }
+  const { id }: Category = await req.json()
+
+  try {
+    await prisma.category.delete({
+      where: {
+        id,
+      },
+    })
+    return NextResponse.json(
+      { message: 'Deletado com sucesso' },
+      { status: 201 },
+    )
+  } catch (error) {
+    return NextResponse.json({ message: 'Error ao deletar' }, { status: 400 })
+  }
+}

@@ -44,8 +44,8 @@ export const NewCatergoyForm = () => {
       userId: data?.user.id,
     })
     router.refresh()
-    console.log(values)
   }
+
   return (
     <div>
       <Sheet>
