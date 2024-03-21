@@ -1,12 +1,11 @@
 'use client'
 import React from 'react'
 import { usePathname } from 'next/navigation'
-import { FormCreate } from './Form-Create'
 import financefire from '../../../public/financefire.png'
 import Image from 'next/image'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
-import { Loader } from 'lucide-react'
+import { Loader, LogIn, LogOut } from 'lucide-react'
 
 export const HeaderPages = () => {
   const pathname = usePathname()
@@ -30,7 +29,6 @@ export const HeaderPages = () => {
         </span>
       </div>
       <div className="flex items-center space-x-5">
-        <FormCreate />
         {status === 'loading' && <Loader className="animate-spin" />}
         {status === 'unauthenticated' && (
           <Button
@@ -39,15 +37,17 @@ export const HeaderPages = () => {
             className="max-sm:hidden"
           >
             Entrar
+            <LogIn size={14} />
           </Button>
         )}
         {status === 'authenticated' && (
           <Button
             onClick={handleSignOut}
-            variant={'ghost'}
-            className="max-sm:hidden"
+            variant={'outline'}
+            className="max-sm:hidden gap-2"
           >
             Sair
+            <LogOut size={14} />
           </Button>
         )}
       </div>

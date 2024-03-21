@@ -1,8 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import prisma from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { Category } from '@prisma/client'
+
+export async function GET(req: Request, res: Response) {
+  try {
+    const response = await prisma.category.findMany()
+    return NextResponse.json(response, { status: 200 })
+  } catch (error) {}
+}
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions)
@@ -30,10 +38,10 @@ export async function POST(req: Request) {
   }
 }
 export async function DELETE(req: Request) {
-  // const session = await getServerSession(authOptions)
-  // if (!session || !session.user) {
-  //   return NextResponse.json({ message: 'Não autorizado' }, { status: 401 })
-  // }
+  const session = await getServerSession(authOptions)
+  if (!session || !session.user) {
+    return NextResponse.json({ message: 'Não autorizado' }, { status: 401 })
+  }
   const { id }: Category = await req.json()
 
   try {

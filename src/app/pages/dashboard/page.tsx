@@ -1,4 +1,4 @@
-import { CardsDashboard } from '@/app/_components/CardsDashboard'
+import { CardsDashboard } from '@/app/pages/dashboard/_components/CardsDashboard'
 import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'

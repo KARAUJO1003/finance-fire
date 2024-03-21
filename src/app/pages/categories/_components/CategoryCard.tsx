@@ -22,7 +22,7 @@ export const CategoryCard = async () => {
   })
 
   return (
-    <main className="space-y-3">
+    <main className=" grid grid-cols-3 gap-3 max-lg:grid-cols-2 max-md:grid-cols-1">
       {categories.map((item) => (
         <Card key={item.id} className="flex justify-between ">
           <div className="mb-3 flex items-center gap-4 p-4">

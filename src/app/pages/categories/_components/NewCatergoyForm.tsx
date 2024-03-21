@@ -2,7 +2,6 @@
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -52,9 +51,12 @@ export const NewCatergoyForm = () => {
         <SheetTrigger asChild>
           <Button>New category</Button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="max-sm:w-full">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+              <h2 className="font-semibold text-lg">
+                Cadastre uma nova categoria
+              </h2>
               <div className="flex items-center gap-3">
                 <FormField
                   control={form.control}
@@ -69,9 +71,6 @@ export const NewCatergoyForm = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription>
-                        This is your public display name.
-                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -90,9 +89,6 @@ export const NewCatergoyForm = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription>
-                        This is your public display name.
-                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}

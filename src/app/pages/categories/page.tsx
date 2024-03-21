@@ -11,7 +11,7 @@ export default async function Categories() {
     redirect('/')
   }
   return (
-    <div className="space-y-2">
+    <div className="space-y-4">
       <NewCatergoyForm />
       <CategoryCard />
     </div>

@@ -1,6 +1,6 @@
 'use client'
-import { CardMovimentations } from '@/app/_components/CardMovimentationsItems'
-import CatdFinance from '@/app/_components/ChartFinance'
+import { CardMovimentations } from '@/app/pages/dashboard/_components/CardMovimentationsItems'
+import CatdFinance from '@/app/pages/dashboard/_components/ChartFinance'
 import {
   FinancialRecord,
   columns,

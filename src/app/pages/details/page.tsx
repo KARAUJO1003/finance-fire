@@ -1,5 +1,5 @@
 import React from 'react'
-import { DataTableDemo } from '@/app/_components/DataTableDemo'
+import { DataTableDemo } from '@/app/pages/details/_components/DataTableDemo'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { redirect } from 'next/navigation'
