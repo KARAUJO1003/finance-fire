@@ -8,5 +8,5 @@ export default async function Investimentos() {
   if (!session || !session.user) {
     redirect('/')
   }
-  return <div>Investimentos</div>
+  return <div>Metas</div>
 }

@@ -44,7 +44,7 @@ export const SideBarNav = () => {
             href="/"
             currentPath={pathname}
           >
-            Home
+            Início
           </SideNavLink>
         </Button>
         <Button
@@ -57,7 +57,7 @@ export const SideBarNav = () => {
             href="/pages/dashboard"
             currentPath={pathname}
           >
-            Dashboard
+            Painel
           </SideNavLink>
         </Button>
         <Button
@@ -70,7 +70,7 @@ export const SideBarNav = () => {
             href="/pages/dashboard/ganhos"
             currentPath={pathname}
           >
-            Incomes
+            Rendimentos
           </SideNavLink>
         </Button>
         <Button
@@ -83,7 +83,7 @@ export const SideBarNav = () => {
             href="/pages/dashboard/despesas"
             currentPath={pathname}
           >
-            Expenses
+            Despesas
           </SideNavLink>
         </Button>
         <Button
@@ -93,10 +93,10 @@ export const SideBarNav = () => {
         >
           <SideNavLink
             icon={<Activity size={14} className="mr-2 max-md:m-0" />}
-            href="/pages/dashboard/investimentos"
+            href="/pages/dashboard/metas"
             currentPath={pathname}
           >
-            Goal
+            Meta
           </SideNavLink>
         </Button>
         <Button
@@ -109,7 +109,7 @@ export const SideBarNav = () => {
             href="/pages/categories"
             currentPath={pathname}
           >
-            Categories
+            Categorias
           </SideNavLink>
         </Button>
         <Button
@@ -122,11 +122,11 @@ export const SideBarNav = () => {
             href="/pages/details"
             currentPath={pathname}
           >
-            Overview
+            Visão Geral
           </SideNavLink>
         </Button>
       </SideNavContent>
-      <SideNavFooter>Footer</SideNavFooter>
+      <SideNavFooter>Rodapé</SideNavFooter>
     </SideNav>
   )
 }
