@@ -10,7 +10,7 @@ export default async function page() {
     redirect('/')
   }
   return (
-    <div>
+    <div className="max-w-3/4">
       <FormIncomes />
     </div>
   )

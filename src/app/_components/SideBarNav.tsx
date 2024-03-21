@@ -35,20 +35,25 @@ export const SideBarNav = () => {
         </Link>
       </SideNavHeader>
       <SideNavContent>
-        <SideNavLink
-          icon={<HomeIcon size={14} className="mr-2 max-md:m-0" />}
-          href="/"
-          currentPath={pathname}
+        <Button
+          className="hover:no-underline p-0 justify-start"
+          variant={'link'}
         >
-          Home
-        </SideNavLink>
+          <SideNavLink
+            icon={<HomeIcon size={14} className="mr-2 max-md:m-0" />}
+            href="/"
+            currentPath={pathname}
+          >
+            Home
+          </SideNavLink>
+        </Button>
         <Button
           disabled={status === 'unauthenticated'}
           className="hover:no-underline p-0 justify-start"
           variant={'link'}
         >
           <SideNavLink
-            icon={<LayoutDashboard size={14} className="mr-2 max-md:m-0" />}
+            icon={<LayoutDashboard size={14} className="mr-2 max-md:m-0 " />}
             href="/pages/dashboard"
             currentPath={pathname}
           >

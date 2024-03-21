@@ -22,27 +22,27 @@ export const FormIncomes = async () => {
 
   return (
     <form action={handleSumbmit}>
-      <div className=" gap-3 grid grid-cols-3">
+      <div className=" lg:px-40 gap-3 grid grid-cols-3">
         <div className="col-span-3">
           Income Amount
           <Input placeholder="Digite algo" name="incomeAmount" />
         </div>
 
-        <div className="col-span-1">
+        <div className="col-span-full">
           Income Date
           <Input name="incomeDate" type="date" />
         </div>
 
-        <div className="col-span-2">
+        <div className="col-span-full">
           Status
           <Input name="status" placeholder="Digite algo" />
         </div>
 
-        <div className="flex flex-col">
+        <div className="col-span-full">
           Categoria
           <Select name="categoryId">
             <SelectTrigger>
-              <SelectValue />
+              <SelectValue placeholder="Selecione uma opção" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -56,12 +56,14 @@ export const FormIncomes = async () => {
           </Select>
         </div>
 
-        <div className="col-span-2">
+        <div className="col-span-full">
           Description
           <Input type="text" name="description" />
         </div>
 
-        <Button type="submit">Cadastrar</Button>
+        <Button className="col-span-full mt-5" type="submit">
+          Cadastrar
+        </Button>
       </div>
     </form>
   )

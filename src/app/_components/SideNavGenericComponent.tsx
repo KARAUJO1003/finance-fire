@@ -72,7 +72,7 @@ export const SideNavLink = ({
       href={href}
       className={cn(
         [
-          `${buttonVariants({ variant: isActive ? 'default' : 'link' })} hover:no-underline max-md:p-2.5  `,
+          `${buttonVariants({ variant: isActive ? 'default' : 'link' })} hover:no-underline max-md:p-2.5 w-full`,
         ],
         className,
       )}
@@ -81,7 +81,7 @@ export const SideNavLink = ({
 
       <span
         className={`
-           hover:no-underline pl-0 justify-start text-start w-full max-md:hidden`}
+           hover:no-underline pl-0 justify-start text-start lg:w-full max-md:hidden`}
       >
         {children}
       </span>
