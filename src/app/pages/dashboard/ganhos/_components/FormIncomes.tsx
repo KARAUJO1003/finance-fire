@@ -11,11 +11,34 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import prisma from '@/lib/prisma'
+import { redirect } from 'next/navigation'
+
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
 
 export const FormIncomes = async () => {
+  const session = await getServerSession(authOptions)
   async function handleSumbmit(formData: FormData) {
     'use server'
-    console.log(formData)
+    // console.log(formData)
+
+    const incomeAmount = formData.get('incomeAmount') as string
+    const incomeDate = formData.get('incomeDate') as string
+    const status = formData.get('status') as string
+    const categoryId = formData.get('categoryId') as string
+    const description = formData.get('description') as string
+
+    await prisma.incomes.create({
+      data: {
+        incomeAmount,
+        incomeDate,
+        status,
+        categoryId,
+        description,
+        userId: session?.user.id,
+      },
+    })
+    redirect('/pages/dashboard/ganhos')
   }
 
   const categories = await prisma.category.findMany()
@@ -30,7 +53,7 @@ export const FormIncomes = async () => {
 
         <div className="col-span-full">
           Income Date
-          <Input name="incomeDate" type="date" />
+          <Input name="incomeDate" type="datetime-local" />
         </div>
 
         <div className="col-span-full">

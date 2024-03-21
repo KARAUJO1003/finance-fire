@@ -30,7 +30,7 @@ model Category {
 model Incomes {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
   incomeAmount String
-  incomeDate   DateTime?
+  incomeDate   String?
   description  String?
   status       String
   created_at   DateTime? @default(now())
@@ -46,7 +46,7 @@ model Incomes {
 model Goal {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   goalAmount  String
-  goalDate    DateTime?
+  goalDate    String?
   description String?
   status      String
   created_at  DateTime? @default(now())
@@ -62,7 +62,7 @@ model Goal {
 model Expenses {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   expenseAmount String
-  incomeDate    DateTime?
+  incomeDate    String?
   description   String?
   status        String
   created_at    DateTime? @default(now())
