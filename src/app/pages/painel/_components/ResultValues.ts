@@ -1,4 +1,11 @@
-import { fetchItems } from './fetchItems'
+import { fetchItems } from './FetchItems'
+
+export interface ProcessedData {
+  totalExpenses: () => string
+  totalIncomes: () => string
+  totalGoals: () => string
+  balance: () => string
+}
 
 export async function processData() {
   const { incomes, expenses, goals } = await fetchItems()

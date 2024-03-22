@@ -115,7 +115,7 @@ export function DataTableDemo<TData, TValue>({
           </DropdownMenu>
           <Link
             className={buttonVariants({ variant: 'default' })}
-            href={`/pages/dashboard/${urlpage}/new`}
+            href={`/pages/painel/${urlpage}/new`}
           >
             Criar novo
           </Link>
