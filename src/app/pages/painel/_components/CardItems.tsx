@@ -14,12 +14,12 @@ type CardProps = {
   cardtitle: string
   carddescription: string
   cardicon?: React.ReactElement
-  cardvalue: string
+  cardvalue?: React.ReactElement
   cardbutton: string
   href: string
 }
 
-export const CardMovimentations = ({
+export const CardMovimentations = async ({
   cardtitle,
   carddescription,
   cardicon,
@@ -36,10 +36,7 @@ export const CardMovimentations = ({
       </CardHeader>
       <CardContent className="flex items-center gap-2 text-emerald-500">
         <span>{cardicon}</span>
-        {/* <ArrowUpRight size={24} /> */}
-        <CardDescription className="text-md lg:text-xl xl:text-2xl">
-          {cardvalue}
-        </CardDescription>
+        {cardvalue}
       </CardContent>
       <CardFooter>
         <Button variant={'outline'} size={'sm'}>

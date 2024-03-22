@@ -12,6 +12,7 @@ export default async function Dashboard() {
   return (
     <div className="flex flex-col gap-5 w-full">
       <CardsDashboard />
+      {/* <h1> hello</h1> */}
     </div>
   )
 }

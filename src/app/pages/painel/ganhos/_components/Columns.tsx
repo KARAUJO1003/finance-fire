@@ -42,7 +42,7 @@ export const columns: ColumnDef<Incomes>[] = [
     accessorKey: 'status',
     header: ({ column }) => {
       return (
-        <div className="w-full flex items-center justify-center">
+        <div>
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
@@ -63,7 +63,7 @@ export const columns: ColumnDef<Incomes>[] = [
     accessorKey: 'incomeAmount',
     header: ({ column }) => {
       return (
-        <div className="w-full flex items-center justify-end">
+        <div>
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
@@ -83,14 +83,14 @@ export const columns: ColumnDef<Incomes>[] = [
         currency: 'BRL',
       }).format(amount)
 
-      return <div className="text-center font-medium">{formatted}</div>
+      return <div className="text-left font-medium">{formatted}</div>
     },
   },
   {
     accessorKey: 'incomeDate',
     header: ({ column }) => {
       return (
-        <div className="w-full flex items-center justify-center">
+        <div>
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
@@ -106,14 +106,14 @@ export const columns: ColumnDef<Incomes>[] = [
       const dateBR = new Date(row.getValue('incomeDate')).toLocaleDateString(
         'pt-BR',
       )
-      return <div className="text-center font-medium">{dateBR}</div>
+      return <div className="text-left font-medium">{dateBR}</div>
     },
   },
   {
     accessorKey: 'description',
     header: ({ column }) => {
       return (
-        <div className="w-full flex items-center justify-center">
+        <div>
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
@@ -126,7 +126,7 @@ export const columns: ColumnDef<Incomes>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="text-center font-medium">
+        <div className="text-left font-medium">
           {row.getValue('description')}
         </div>
       )
