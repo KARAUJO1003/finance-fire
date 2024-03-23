@@ -13,6 +13,7 @@ export default async function Metas() {
   }
 
   const data = await prisma.goal.findMany({
+    where: { id: session.user.id },
     include: {
       user: true,
       category: true,

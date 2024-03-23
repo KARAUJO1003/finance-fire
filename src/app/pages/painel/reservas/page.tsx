@@ -13,6 +13,7 @@ export default async function Reservas() {
   }
 
   const data = await prisma.piggyBank.findMany({
+    where: { id: session.user.id },
     include: {
       user: true,
       goals: true,

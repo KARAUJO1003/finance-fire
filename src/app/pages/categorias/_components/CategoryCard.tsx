@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/card'
 import { authOptions } from '@/lib/auth'
 import prisma from '@/lib/prisma'
-import { Disc2 } from 'lucide-react'
+import { Ban, Disc2 } from 'lucide-react'
 import { getServerSession } from 'next-auth'
 import React from 'react'
 import { ButtonDelete } from './ButtonDelete'
@@ -23,6 +23,16 @@ export const CategoryCard = async () => {
 
   return (
     <main className=" grid grid-cols-3 gap-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+      {categories.length === 0 && (
+        <Card className="flex justify-center items-center  min-h-32">
+          <CardHeader className="flex  items-center justify-center p-0">
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <Ban color={'gray'} size={14} />
+              <CardTitle>Nenhuma categoria cadastrada</CardTitle>
+            </div>
+          </CardHeader>
+        </Card>
+      )}
       {categories.map((item) => (
         <Card key={item.id} className="flex justify-between ">
           <div className="mb-3 flex items-center gap-4 p-4">
