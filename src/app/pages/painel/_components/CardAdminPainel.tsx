@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { Link2 } from 'lucide-react'
 
 type CardAdminPainelGenericProps<T = unknown> = {
   children: React.ReactNode
@@ -59,8 +60,8 @@ const AdminCardHeaderLink = ({
         className,
       )}
     >
-      <Link href={href}>{children}</Link>
       <span>{icon}</span>
+      <Link href={href}>{children}</Link>
     </CardDescription>
   )
 }
@@ -107,7 +108,6 @@ type CardAdminPainelProps = {
   action?: ReactElement
   linkCurrentPage: string
   titleIcon?: ReactElement
-  linkIcon: ReactElement
 }
 
 export const CardAdmin = ({
@@ -115,7 +115,6 @@ export const CardAdmin = ({
   amountValue,
   linkCurrentPage,
   linkValue,
-  linkIcon,
   titleValue,
   action,
 }: CardAdminPainelProps) => {
@@ -125,11 +124,14 @@ export const CardAdmin = ({
         <AdminCardHeaderTitle icon={titleIcon}>
           {titleValue}
         </AdminCardHeaderTitle>
-        <AdminCardHeaderLink href={linkCurrentPage} icon={linkIcon}>
+      </AdminCardHeader>
+      <AdminCardContent>
+        {amountValue}
+        <AdminCardHeaderLink href={linkCurrentPage} icon={<Link2 size={12} />}>
           {linkValue}
         </AdminCardHeaderLink>
-      </AdminCardHeader>
-      <AdminCardContent>{amountValue}</AdminCardContent>
+      </AdminCardContent>
+
       {action}
     </AdminCard>
   )

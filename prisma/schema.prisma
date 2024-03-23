@@ -28,14 +28,14 @@ model Category {
 }
 
 model Incomes {
-  id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  incomeAmount String
-  recurrent    Boolean?
-  incomeDate   String?
-  description  String?
-  status       String?
-  created_at   DateTime? @default(now())
-  updated_at   DateTime? @default(now())
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  amount      String?
+  recurrent   Boolean?
+  date        String?
+  description String?
+  status      String?
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 
   categoryId String?   @db.ObjectId
   category   Category? @relation(fields: [categoryId], references: [id])
@@ -46,9 +46,9 @@ model Incomes {
 
 model Goal {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  goalAmount  String
+  amount      String?
   recurrent   Boolean?
-  goalDate    String?
+  date        String?
   description String?
   status      String?
   created_at  DateTime? @default(now())
@@ -63,14 +63,14 @@ model Goal {
 }
 
 model Expenses {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  expenseAmount String
-  recurrent     Boolean?
-  expenseDate   String?
-  description   String?
-  status        String?
-  created_at    DateTime? @default(now())
-  updated_at    DateTime? @default(now())
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  amount      String?
+  recurrent   Boolean?
+  date        String?
+  description String?
+  status      String?
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 
   categoryId String?   @db.ObjectId
   category   Category? @relation(fields: [categoryId], references: [id])
@@ -81,7 +81,7 @@ model Expenses {
 
 model PiggyBank {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  amount      String
+  amount      String?
   recurrent   Boolean?
   date        String?
   description String?

@@ -17,11 +17,11 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { Label } from '@/components/ui/label'
 
-type FormGoalsProps = {
+type FormPiggyBankProps = {
   urlPage: string
 }
 
-export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
+export const FormPiggyBank = async ({ urlPage }: FormPiggyBankProps) => {
   const session = await getServerSession(authOptions)
   async function handleSumbmit(formData: FormData) {
     'use server'
@@ -29,15 +29,15 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
     const amount = formData.get('amount') as string
     const date = formData.get('date') as string
     const status = formData.get('status') as string
-    const categoryId = formData.get('categoryId') as string
+    const goalsId = formData.get('goalsId') as string
     const description = formData.get('description') as string
 
-    await prisma.goal.create({
+    await prisma.piggyBank.create({
       data: {
-        amount: amount,
-        date: date,
+        amount,
+        date,
         status,
-        categoryId,
+        goalsId,
         description,
         userId: session?.user.id,
       },
@@ -45,7 +45,11 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
     redirect(`/pages/painel/${urlPage}`)
   }
 
-  const categories = await prisma.category.findMany()
+  const goals = await prisma.goal.findMany({
+    include: {
+      category: true,
+    },
+  })
 
   return (
     <form action={handleSumbmit}>
@@ -69,28 +73,42 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
         </div>
 
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
-          <Label>Categoria</Label>
-          <Select name="categoryId">
+          <Label>Meta</Label>
+          <Select name="goalsId">
             <SelectTrigger>
               <SelectValue placeholder="Selecione uma opção" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {categories.map((item) => (
+                {goals.map((item) => (
                   <SelectItem key={item.id} value={item.id}>
-                    <span>{item.name}</span>
+                    <div className="flex flex-col">
+                      <span className="text-sm">{item.description}</span>
+
+                      <span className="text-xs text-muted-foreground">
+                        {item.category?.name}
+                      </span>
+                    </div>
                   </SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>
           </Select>
         </div>
+
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
           <Label>Status</Label>
-          <Input
-            name="status"
-            placeholder="Digite um nome para seu registro.."
-          />
+          <Select name="status" defaultValue={'Depositado'}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="Depositado">Depositado</SelectItem>
+                <SelectItem value="Não Depositado">Não Depositado</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
 
         <div className="w-[700px] flex justify-end">

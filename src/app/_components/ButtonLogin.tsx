@@ -20,7 +20,7 @@ export const ButtonLogin = () => {
       {status === 'unauthenticated' && (
         <Button
           onClick={handleSignIn}
-          variant={'ghost'}
+          variant={'default'}
           className="max-sm:hidden gap-2"
         >
           Entrar

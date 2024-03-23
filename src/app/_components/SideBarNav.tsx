@@ -5,6 +5,7 @@ import {
   Blocks,
   HomeIcon,
   LayoutDashboard,
+  PiggyBank,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
@@ -47,6 +48,7 @@ export const SideBarNav = () => {
             Início
           </SideNavLink>
         </Button>
+
         <Button
           disabled={status === 'unauthenticated'}
           className="hover:no-underline p-0 justify-start"
@@ -60,6 +62,7 @@ export const SideBarNav = () => {
             Painel
           </SideNavLink>
         </Button>
+
         <Button
           disabled={status === 'unauthenticated'}
           className="hover:no-underline p-0  justify-start"
@@ -73,6 +76,7 @@ export const SideBarNav = () => {
             Rendimentos
           </SideNavLink>
         </Button>
+
         <Button
           disabled={status === 'unauthenticated'}
           className="hover:no-underline p-0  justify-start"
@@ -86,6 +90,7 @@ export const SideBarNav = () => {
             Despesas
           </SideNavLink>
         </Button>
+
         <Button
           disabled={status === 'unauthenticated'}
           className="hover:no-underline p-0  justify-start"
@@ -99,6 +104,21 @@ export const SideBarNav = () => {
             Meta
           </SideNavLink>
         </Button>
+
+        <Button
+          disabled={status === 'unauthenticated'}
+          className="hover:no-underline p-0  justify-start"
+          variant={'link'}
+        >
+          <SideNavLink
+            icon={<PiggyBank size={14} className="mr-2 max-md:m-0" />}
+            href="/pages/painel/reservas"
+            currentPath={pathname}
+          >
+            Resevas
+          </SideNavLink>
+        </Button>
+
         <Button
           disabled={status === 'unauthenticated'}
           className="hover:no-underline p-0  justify-start"
@@ -113,7 +133,11 @@ export const SideBarNav = () => {
           </SideNavLink>
         </Button>
       </SideNavContent>
-      <SideNavFooter>Rodapé</SideNavFooter>
+      <SideNavFooter>
+        <span className="text-xs text-muted-foreground">
+          Feito com 💙 por @kaesyo_
+        </span>
+      </SideNavFooter>
     </SideNav>
   )
 }

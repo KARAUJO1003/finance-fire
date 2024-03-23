@@ -58,7 +58,7 @@ export const columns: ColumnDef<Incomes>[] = [
     },
   },
   {
-    accessorKey: 'incomeAmount',
+    accessorKey: 'amount',
     header: ({ column }) => {
       return (
         <Button
@@ -71,7 +71,7 @@ export const columns: ColumnDef<Incomes>[] = [
       )
     },
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('incomeAmount'))
+      const amount = parseFloat(row.getValue('amount'))
 
       // Formatar o valor como um valor em reais
       const formatted = new Intl.NumberFormat('pt-BR', {
@@ -83,7 +83,7 @@ export const columns: ColumnDef<Incomes>[] = [
     },
   },
   {
-    accessorKey: 'incomeDate',
+    accessorKey: 'date',
     header: ({ column }) => {
       return (
         <Button
@@ -97,9 +97,7 @@ export const columns: ColumnDef<Incomes>[] = [
     },
     cell: ({ row }) => {
       // Formatar a data como uma data em formato brasileiro
-      const dateBR = new Date(row.getValue('incomeDate')).toLocaleDateString(
-        'pt-BR',
-      )
+      const dateBR = new Date(row.getValue('date')).toLocaleDateString('pt-BR')
       return <div className="text-left font-medium">{dateBR}</div>
     },
   },

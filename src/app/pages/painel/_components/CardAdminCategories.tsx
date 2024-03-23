@@ -1,55 +1,41 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 import React from 'react'
-import { AdminCardHeaderLink } from './CardAdminPainel'
-import { SquareArrowOutUpRight } from 'lucide-react'
+import prisma from '@/lib/prisma'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export async function CardAdminCategories() {
+  const exp = await prisma.expenses.findMany({ include: { category: true } })
+  const inc = await prisma.incomes.findMany({ include: { category: true } })
+
+  const data = [...exp, ...inc]
+  console.log(data)
+
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+
   return (
-    <div>
-      <Card className="overflow-hidden">
-        <CardHeader className="w-full text-md flex flex-row justify-between items-center bg-muted/50 py-3">
-          <AdminCardHeaderLink
-            href="/"
-            icon={<SquareArrowOutUpRight size={14} />}
-          >
-            Categorias
-          </AdminCardHeaderLink>
-          <span>Valor</span>
-        </CardHeader>
-        <CardContent className="flex items-center justify-between py-2 border-b last:border-none">
-          <div>
-            <CardTitle>Salario</CardTitle>
-            <CardDescription>Descriçao</CardDescription>
-          </div>
-          <div>
-            <CardTitle>R$ 2.233,12</CardTitle>
-          </div>
-        </CardContent>
-        <CardContent className="flex items-center justify-between py-2 border-b last:border-none">
-          <div>
-            <CardTitle>Salario</CardTitle>
-            <CardDescription>Descriçao</CardDescription>
-          </div>
-          <div>
-            <CardTitle>R$ 2.233,12</CardTitle>
-          </div>
-        </CardContent>
-        <CardContent className="flex items-center justify-between py-2 border-b last:border-none">
-          <div>
-            <CardTitle>Salario</CardTitle>
-            <CardDescription>Descriçao</CardDescription>
-          </div>
-          <div>
-            <CardTitle>R$ 2.233,12</CardTitle>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <Card>
+      <CardHeader className="bg-muted/20 py-3">
+        <CardTitle>Ultimas movimentações</CardTitle>
+      </CardHeader>
+      <ul>
+        {data.map((i) => (
+          <li key={i.id} className="border-b  last:border-none">
+            <CardContent className="py-2 flex justify-between items-end">
+              <div className="flex flex-col ">
+                <strong className="text-sm">{i.category?.name}</strong>
+                <span className="text-xs">
+                  {i.created_at?.toLocaleDateString()}
+                </span>
+              </div>
+              <span className="text-sm">
+                {formatter.format(Number(i.amount))}
+              </span>
+            </CardContent>
+          </li>
+        ))}
+      </ul>
+    </Card>
   )
 }

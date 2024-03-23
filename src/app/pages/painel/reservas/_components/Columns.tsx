@@ -12,9 +12,21 @@ import {
 import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
-import { Goal } from '@prisma/client'
 
-export const columns: ColumnDef<Goal>[] = [
+type PiggyBank = {
+  id: string
+  amount: string
+  recurrent: boolean | null
+  date: string | null
+  description: string | null
+  status: string | null
+  created_at: Date | null
+  updated_at: Date | null
+  goalsId: string | null
+  userId: string | null
+}
+
+export const columns: ColumnDef<PiggyBank>[] = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -68,7 +80,7 @@ export const columns: ColumnDef<Goal>[] = [
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
           >
-            Valor da despesa
+            Valor depositado
             <CaretSortIcon className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -95,7 +107,7 @@ export const columns: ColumnDef<Goal>[] = [
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
           >
-            Data da Despesa
+            Data do deposito
             <CaretSortIcon className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -103,9 +115,7 @@ export const columns: ColumnDef<Goal>[] = [
     },
     cell: ({ row }) => {
       // Formatar a data como uma data em formato brasileiro
-      const dateBR = new Date(row.getValue('date')).toLocaleDateString(
-        'pt-BR',
-      )
+      const dateBR = new Date(row.getValue('date')).toLocaleDateString('pt-BR')
       return <div className="text-left font-medium">{dateBR}</div>
     },
   },

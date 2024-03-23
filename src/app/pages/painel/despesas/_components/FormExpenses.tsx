@@ -15,7 +15,6 @@ import { redirect } from 'next/navigation'
 
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 
 type FormExpensesProps = {
@@ -35,29 +34,30 @@ export const FormExpenses = async ({ urlPage }: FormExpensesProps) => {
 
     await prisma.expenses.create({
       data: {
-        expenseAmount: amount,
-        expenseDate: date,
+        amount: amount,
+        date: date,
         status,
         categoryId,
         description,
         userId: session?.user.id,
       },
     })
-    redirect(`/pages/dashboard/${urlPage}`)
+    redirect(`/pages/painel/${urlPage}`)
   }
 
   const categories = await prisma.category.findMany()
 
   return (
     <form action={handleSumbmit}>
-      <div className=" flex flex-col items-center gap-3">
+      <div className="flex flex-col items-center gap-3">
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
-          <Label>Titulo</Label>
+          <Label>Descrição</Label>
           <Input
-            name="status"
-            placeholder="Digite um nome para seu registro.."
+            name="description"
+            placeholder="Descreva sobre seu registro..."
           />
         </div>
+
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
           <Label>Valor</Label>
           <Input placeholder="R$" name="amount" />
@@ -69,15 +69,10 @@ export const FormExpenses = async ({ urlPage }: FormExpensesProps) => {
         </div>
 
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
-          <Label>Status</Label>
-          <Input name="status" placeholder="Digite um status.." />
-        </div>
-
-        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
           <Label>Categoria</Label>
           <Select name="categoryId">
             <SelectTrigger>
-              <SelectValue placeholder="Selecione uma opção" />
+              <SelectValue placeholder="Selecione uma opção..." />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -90,12 +85,11 @@ export const FormExpenses = async ({ urlPage }: FormExpensesProps) => {
             </SelectContent>
           </Select>
         </div>
-
         <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
-          <Label>Descrição</Label>
-          <Textarea
-            name="description"
-            placeholder="Descreva sobre seu registro..."
+          <Label>Status</Label>
+          <Input
+            name="status"
+            placeholder="Digite um nome para seu registro.."
           />
         </div>
 

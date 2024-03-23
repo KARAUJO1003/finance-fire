@@ -60,7 +60,7 @@ export const columns: ColumnDef<Expenses>[] = [
     },
   },
   {
-    accessorKey: 'expenseAmount',
+    accessorKey: 'amount',
     header: ({ column }) => {
       return (
         <div className="w-full flex items-start justify-start">
@@ -75,7 +75,7 @@ export const columns: ColumnDef<Expenses>[] = [
       )
     },
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('expenseAmount'))
+      const amount = parseFloat(row.getValue('amount'))
 
       // Formatar o valor como um valor em reais
       const formatted = new Intl.NumberFormat('pt-BR', {
@@ -87,7 +87,7 @@ export const columns: ColumnDef<Expenses>[] = [
     },
   },
   {
-    accessorKey: 'expenseDate',
+    accessorKey: 'date',
     header: ({ column }) => {
       return (
         <div className="w-full flex items-start justify-start">
@@ -103,7 +103,7 @@ export const columns: ColumnDef<Expenses>[] = [
     },
     cell: ({ row }) => {
       // Formatar a data como uma data em formato brasileiro
-      const dateBR = new Date(row.getValue('expenseDate')).toLocaleDateString(
+      const dateBR = new Date(row.getValue('date')).toLocaleDateString(
         'pt-BR',
       )
       return <div className="text-left font-medium">{dateBR}</div>

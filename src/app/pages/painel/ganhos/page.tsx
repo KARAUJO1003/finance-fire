@@ -25,7 +25,7 @@ export default async function Ganhos() {
     <div>
       <main>
         <DataTableDemo
-          amount="incomeAmount"
+          amount="amount"
           data={data}
           columns={columns}
           urlpage="ganhos"

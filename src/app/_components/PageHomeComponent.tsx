@@ -2,8 +2,6 @@
 import React, { useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
-import { ArrowRight } from 'lucide-react'
-
 import { useGSAP } from '@gsap/react'
 import { TitleHome } from './movimentations/TitleHome'
 
@@ -35,9 +33,17 @@ export const PageHomeComponent = () => {
       >
         <div className="flex flex-col">
           <TitleHome />
-          <span className="flex gap-2 items-center">
-            Clique aqui para continuar <ArrowRight size={18} />
-          </span>
+          <article className="flex gap-2 items-center max-w-lg">
+            <h3>
+              Com uma interface intuitiva e fácil de usar, o FinanceFire oferece
+              recursos avançados com{' '}
+              <strong>análise de desempenho financeiro</strong> e{' '}
+              <strong>recomendações personalizadas</strong>. Além disso, o
+              FinanceFire é seguro e confiável, e oferece suporte técnico 24
+              horas por dia, 7 dias por semana. Com o FinanceFire, os usuários
+              podem ter certeza de que seus finanças estão em boas hands.
+            </h3>
+          </article>
         </div>
       </Link>
     </div>

@@ -32,7 +32,7 @@ export const CategoryCard = async () => {
                 <CardTitle>{item.name}</CardTitle>
               </div>
               <CardDescription className="flex flex-col justify-center items-center">
-                <span>Criando em {item.created_at?.toLocaleDateString()}</span>
+                <span>Criado em {item.created_at?.toLocaleDateString()}</span>
               </CardDescription>
             </CardHeader>
           </div>
