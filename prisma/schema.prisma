@@ -30,6 +30,7 @@ model Category {
 model Incomes {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
   incomeAmount String
+  recurrent    Boolean?
   incomeDate   String?
   description  String?
   status       String?
@@ -46,6 +47,7 @@ model Incomes {
 model Goal {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   goalAmount  String
+  recurrent   Boolean?
   goalDate    String?
   description String?
   status      String?
@@ -55,13 +57,15 @@ model Goal {
   categoryId String?   @db.ObjectId
   category   Category? @relation(fields: [categoryId], references: [id])
 
-  userId String? @db.ObjectId
-  user   User?   @relation(fields: [userId], references: [id])
+  userId    String?     @db.ObjectId
+  user      User?       @relation(fields: [userId], references: [id])
+  PiggyBank PiggyBank[]
 }
 
 model Expenses {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   expenseAmount String
+  recurrent     Boolean?
   expenseDate   String?
   description   String?
   status        String?
@@ -70,6 +74,23 @@ model Expenses {
 
   categoryId String?   @db.ObjectId
   category   Category? @relation(fields: [categoryId], references: [id])
+
+  userId String? @db.ObjectId
+  user   User?   @relation(fields: [userId], references: [id])
+}
+
+model PiggyBank {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  amount      String
+  recurrent   Boolean?
+  date        String?
+  description String?
+  status      String?
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
+
+  goalsId String? @db.ObjectId
+  goals   Goal?   @relation(fields: [goalsId], references: [id])
 
   userId String? @db.ObjectId
   user   User?   @relation(fields: [userId], references: [id])
@@ -103,9 +124,9 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?    @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
@@ -114,6 +135,7 @@ model User {
   expenses      Expenses[]
   Goal          Goal[]
   Category      Category[]
+  PiggyBank     PiggyBank[]
 }
 
 model VerificationToken {

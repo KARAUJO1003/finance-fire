@@ -8,7 +8,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from '@radix-ui/react-dropdown-menu'
+} from '@/components/ui/dropdown-menu'
 import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
@@ -42,15 +42,13 @@ export const columns: ColumnDef<Incomes>[] = [
     accessorKey: 'status',
     header: ({ column }) => {
       return (
-        <div>
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          >
-            Status
-            <CaretSortIcon className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Status
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
     cell: ({ row }) => {
@@ -63,15 +61,13 @@ export const columns: ColumnDef<Incomes>[] = [
     accessorKey: 'incomeAmount',
     header: ({ column }) => {
       return (
-        <div>
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          >
-            Valor do Rendimento
-            <CaretSortIcon className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Valor do Rendimento
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
     cell: ({ row }) => {
@@ -90,15 +86,13 @@ export const columns: ColumnDef<Incomes>[] = [
     accessorKey: 'incomeDate',
     header: ({ column }) => {
       return (
-        <div>
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          >
-            Data do Rendimento
-            <CaretSortIcon className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Data do Rendimento
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
     cell: ({ row }) => {
@@ -113,15 +107,13 @@ export const columns: ColumnDef<Incomes>[] = [
     accessorKey: 'description',
     header: ({ column }) => {
       return (
-        <div>
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          >
-            Descrição
-            <CaretSortIcon className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Descrição
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
     cell: ({ row }) => {

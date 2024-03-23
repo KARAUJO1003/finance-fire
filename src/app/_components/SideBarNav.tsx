@@ -2,9 +2,9 @@
 
 import {
   Activity,
+  Blocks,
   HomeIcon,
   LayoutDashboard,
-  LayoutList,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
@@ -105,7 +105,7 @@ export const SideBarNav = () => {
           variant={'link'}
         >
           <SideNavLink
-            icon={<LayoutList size={14} className="mr-2 max-md:m-0" />}
+            icon={<Blocks size={14} className="mr-2 max-md:m-0" />}
             href="/pages/categorias"
             currentPath={pathname}
           >

@@ -8,7 +8,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from '@radix-ui/react-dropdown-menu'
+} from '@/components/ui/dropdown-menu'
 import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
