@@ -12,19 +12,7 @@ import {
 import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
-
-type PiggyBank = {
-  id: string
-  amount: string
-  recurrent: boolean | null
-  date: string | null
-  description: string | null
-  status: string | null
-  created_at: Date | null
-  updated_at: Date | null
-  goalsId: string | null
-  userId: string | null
-}
+import { PiggyBank } from '@prisma/client'
 
 export const columns: ColumnDef<PiggyBank>[] = [
   {
