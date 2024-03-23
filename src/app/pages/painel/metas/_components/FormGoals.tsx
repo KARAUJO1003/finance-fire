@@ -16,6 +16,8 @@ import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { Label } from '@/components/ui/label'
+import { Disc2 } from 'lucide-react'
+import { NewCatergoyForm } from '@/app/pages/categorias/_components/NewCatergoyForm'
 
 type FormGoalsProps = {
   urlPage: string
@@ -25,7 +27,6 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
   const session = await getServerSession(authOptions)
   async function handleSumbmit(formData: FormData) {
     'use server'
-    // console.log(formData)
     const amount = formData.get('amount') as string
     const date = formData.get('date') as string
     const status = formData.get('status') as string
@@ -34,8 +35,8 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
 
     await prisma.goal.create({
       data: {
-        amount: amount,
-        date: date,
+        amount,
+        date,
         status,
         categoryId,
         description,
@@ -45,7 +46,9 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
     redirect(`/pages/painel/${urlPage}`)
   }
 
-  const categories = await prisma.category.findMany()
+  const categories = await prisma.category.findMany({
+    where: { type: 'META' },
+  })
 
   return (
     <form action={handleSumbmit}>
@@ -75,10 +78,19 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
               <SelectValue placeholder="Selecione uma opção" />
             </SelectTrigger>
             <SelectContent>
+              <SelectGroup className="py-2">
+                <NewCatergoyForm variant={'link'} type="META" />
+              </SelectGroup>
               <SelectGroup>
                 {categories.map((item) => (
                   <SelectItem key={item.id} value={item.id}>
-                    <span>{item.name}</span>
+                    <div className=" flex items-center justify-between gap-2">
+                      <Disc2 size={12} color={`${item.color}`} />
+                      <span>{item.name}</span>
+                      <span className="capitalize text-xs text-muted-foreground">
+                        {item.type?.toLowerCase()}
+                      </span>
+                    </div>
                   </SelectItem>
                 ))}
               </SelectGroup>

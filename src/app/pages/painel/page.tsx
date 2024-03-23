@@ -16,46 +16,56 @@ export default async function Dashboard() {
     await processData()
 
   return (
-    <main className="flex flex-col gap-5 w-full">
-      <section className="grid grid-cols-4 gap-4">
+    <main className="grid grid-cols-8 gap-5 w-full">
+      <section className="grid grid-rows-4 gap-4 col-span-2">
         <CardAdmin
           titleValue="Saldo"
           titleIcon={<Activity size={14} className="text-muted-foreground" />}
-          linkCurrentPage="/"
-          linkValue="Ver detalhes"
+          linkCurrentPage="/pages/painel/painel"
           amountValue={balance()}
           action={<AdminCardActions href="/">Ver categorias</AdminCardActions>}
         />
         <CardAdmin
           titleValue="Entrada"
           titleIcon={<TrendingUp size={14} className="text-emerald-500" />}
-          linkCurrentPage="/"
-          linkValue="Ver detalhes"
+          linkCurrentPage="/pages/painel/ganhos"
           amountValue={totalIncomes()}
-          action={<AdminCardActions href="/">Novo registro</AdminCardActions>}
+          action={
+            <AdminCardActions href="/pages/painel/ganhos/new">
+              Novo registro
+            </AdminCardActions>
+          }
         />
         <CardAdmin
           titleValue="Saida"
           titleIcon={<TrendingDown size={14} className="text-red-500" />}
-          linkCurrentPage="/"
-          linkValue="Ver detalhes"
+          linkCurrentPage="/pages/painel/despesas"
           amountValue={totalExpenses()}
-          action={<AdminCardActions href="/">Novo registro</AdminCardActions>}
+          action={
+            <AdminCardActions href="/pages/painel/despesas/new">
+              Novo registro
+            </AdminCardActions>
+          }
         />
         <CardAdmin
           titleValue="Meta"
           titleIcon={<Rocket size={14} className="text-muted-foreground" />}
-          linkCurrentPage="/"
-          linkValue="Ver detalhes"
+          linkCurrentPage="/pages/painel/metas"
           amountValue={totalGoals()}
-          action={<AdminCardActions href="/">Novo registro</AdminCardActions>}
+          action={
+            <AdminCardActions href="/pages/painel/metas/new">
+              Novo registro
+            </AdminCardActions>
+          }
         />
       </section>
-      <section className="grid grid-cols-2 gap-4">
+      <section className="grid grid-rows-2 col-span-6 gap-4">
         <div className="col-span-1">
           <CardAdminCategories />
         </div>
-        <div className="col-span-1">Chart</div>
+        <div className="col-span-1">
+          <CardAdminCategories />
+        </div>
       </section>
     </main>
   )

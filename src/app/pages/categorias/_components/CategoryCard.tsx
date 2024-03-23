@@ -44,6 +44,9 @@ export const CategoryCard = async () => {
               <CardDescription className="flex flex-col justify-center items-center">
                 <span>Criado em {item.created_at?.toLocaleDateString()}</span>
               </CardDescription>
+              <CardDescription className="flex flex-col justify-center items-center">
+                <span>Associado à {item.type?.toLowerCase()}</span>
+              </CardDescription>
             </CardHeader>
           </div>
           <CardFooter>

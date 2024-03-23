@@ -25,7 +25,6 @@ export const FormPiggyBank = async ({ urlPage }: FormPiggyBankProps) => {
   const session = await getServerSession(authOptions)
   async function handleSumbmit(formData: FormData) {
     'use server'
-    // console.log(formData)
     const amount = formData.get('amount') as string
     const date = formData.get('date') as string
     const status = formData.get('status') as string

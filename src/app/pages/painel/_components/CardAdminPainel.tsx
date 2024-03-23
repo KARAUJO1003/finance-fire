@@ -19,7 +19,7 @@ type CardAdminPainelGenericProps<T = unknown> = {
 } & T
 
 const AdminCard = ({ children, className }: CardAdminPainelGenericProps) => {
-  return <Card className={cn(['py-4'], className)}>{children}</Card>
+  return <Card className={cn(['py-4 bg-muted/20'], className)}>{children}</Card>
 }
 const AdminCardHeader = ({
   children,
@@ -56,7 +56,7 @@ const AdminCardHeaderLink = ({
   return (
     <CardDescription
       className={cn(
-        ['flex items-center p-0 gap-2 hover:underline rounded'],
+        ['flex items-center p-0 gap-2 text-xl hover:underline rounded'],
         className,
       )}
     >
@@ -73,7 +73,7 @@ const AdminCardContent = ({
   return (
     <CardContent
       className={cn(
-        ['text-2xl font-semibold px-4 py-3 text-muted-foreground'],
+        ['text-2xl font-semibold px-4 py-4 text-muted-foreground'],
         className,
       )}
     >
@@ -90,7 +90,7 @@ const AdminCardActions = ({
   return (
     <CardFooter className="px-4 py-0">
       <Button
-        variant="outline"
+        variant="secondary"
         size="sm"
         className={cn([''], className)}
         asChild
@@ -114,7 +114,6 @@ export const CardAdmin = ({
   titleIcon,
   amountValue,
   linkCurrentPage,
-  linkValue,
   titleValue,
   action,
 }: CardAdminPainelProps) => {
@@ -126,9 +125,8 @@ export const CardAdmin = ({
         </AdminCardHeaderTitle>
       </AdminCardHeader>
       <AdminCardContent>
-        {amountValue}
         <AdminCardHeaderLink href={linkCurrentPage} icon={<Link2 size={12} />}>
-          {linkValue}
+          {amountValue}
         </AdminCardHeaderLink>
       </AdminCardContent>
 

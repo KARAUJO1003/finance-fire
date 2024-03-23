@@ -12,7 +12,7 @@ export default async function Categories() {
   }
   return (
     <div className="space-y-4">
-      <NewCatergoyForm />
+      <NewCatergoyForm variant={'default'} />
       <CategoryCard />
     </div>
   )

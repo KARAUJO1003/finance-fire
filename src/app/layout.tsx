@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { SideBarNav } from './_components/SideBarNav'
 import { AuthProvider } from '@/providers/auth'
 import { Toaster } from '@/components/ui/sonner'
+import { cn } from '@/lib/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,15 +20,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={(inter.className, 'flex ')}>
+    <html lang="pt-BR">
+      <body className={cn(['flex'], inter.className)}>
         <AuthProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
+          <ThemeProvider attribute="class" defaultTheme="dark">
             <SideBarNav />
             {children}
             <Toaster />

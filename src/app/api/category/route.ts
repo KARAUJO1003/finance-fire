@@ -18,13 +18,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: 'Não autorizado' }, { status: 401 })
   }
 
-  const { name, color, userId }: Category = await req.json()
+  const { name, color, type, userId }: Category = await req.json()
 
   try {
     await prisma.category.create({
       data: {
         name,
         color,
+        type,
         userId,
       },
     })

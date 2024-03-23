@@ -6,14 +6,22 @@ import { authOptions } from '@/lib/auth'
 
 export async function CardAdminCategories() {
   const session = await getServerSession(authOptions)
+  if (!session || !session.user) {
+    return null
+  }
+
+  console.log(session.user.id)
+
   const exp = await prisma.expenses.findMany({
-    where: { id: session?.user.id },
+    where: { userId: session?.user.id },
     include: { category: true },
   })
   const inc = await prisma.incomes.findMany({
-    where: { id: session?.user.id },
+    where: { userId: session.user.id },
     include: { category: true },
   })
+
+  console.log(inc, exp)
 
   const data = [...exp, ...inc]
   console.log(data)
@@ -29,7 +37,7 @@ export async function CardAdminCategories() {
         <CardTitle>Ultimas movimentações</CardTitle>
       </CardHeader>
       {data.length === 0 && (
-        <div className="min-h-40 p-4 flex items-center justify-center text-muted-foreground text-sm">
+        <div className="  p-4 flex items-center justify-center text-muted-foreground text-sm">
           <span>Você ainda não possui registros.</span>
         </div>
       )}
