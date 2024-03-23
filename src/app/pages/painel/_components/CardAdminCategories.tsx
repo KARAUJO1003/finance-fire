@@ -20,10 +20,14 @@ export async function CardAdminCategories() {
     where: { userId: session.user.id },
     include: { category: true },
   })
+  const goal = await prisma.goal.findMany({
+    where: { userId: session.user.id },
+    include: { category: true },
+  })
 
-  console.log(inc, exp)
+  console.log(inc, exp, goal)
 
-  const data = [...exp, ...inc]
+  const data = [...exp, ...inc, ...goal]
   console.log(data)
 
   const formatter = new Intl.NumberFormat('pt-BR', {

@@ -13,7 +13,7 @@ export default async function Despesas() {
   }
 
   const data = await prisma.expenses.findMany({
-    where: { id: session.user.id },
+    where: { userId: session.user.id },
     include: {
       user: true,
       category: true,
