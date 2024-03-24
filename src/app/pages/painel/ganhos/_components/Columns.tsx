@@ -13,6 +13,7 @@ import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
 import { Incomes } from '@prisma/client'
+import { DeleteButtom } from '../../_components/DeleteButtom'
 
 export const columns: ColumnDef<Incomes>[] = [
   {
@@ -57,6 +58,7 @@ export const columns: ColumnDef<Incomes>[] = [
       )
     },
   },
+
   {
     accessorKey: 'amount',
     header: ({ column }) => {
@@ -82,6 +84,7 @@ export const columns: ColumnDef<Incomes>[] = [
       return <div className="text-left font-medium">{formatted}</div>
     },
   },
+
   {
     accessorKey: 'date',
     header: ({ column }) => {
@@ -101,6 +104,7 @@ export const columns: ColumnDef<Incomes>[] = [
       return <div className="text-left font-medium">{dateBR}</div>
     },
   },
+
   {
     accessorKey: 'description',
     header: ({ column }) => {
@@ -122,6 +126,7 @@ export const columns: ColumnDef<Incomes>[] = [
       )
     },
   },
+
   {
     id: 'actions',
     enableHiding: false,
@@ -144,8 +149,10 @@ export const columns: ColumnDef<Incomes>[] = [
               Copiar ID do registro
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Ver usuário</DropdownMenuItem>
             <DropdownMenuItem>Ver detalhes do registro</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <DeleteButtom id={row.original.id} routeName="incomes" />
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

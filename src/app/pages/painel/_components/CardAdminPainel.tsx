@@ -94,9 +94,9 @@ const AdminCardActions = ({
   return (
     <CardFooter className="px-4 py-0">
       <Button
-        variant="secondary"
+        variant="outline"
         size="sm"
-        className={cn([''], className)}
+        className={cn(['bg-muted/20'], className)}
         asChild
       >
         <Link href={href}> {children}</Link>

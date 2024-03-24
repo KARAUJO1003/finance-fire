@@ -11,7 +11,7 @@ export default async function page() {
   }
   return (
     <div className="max-w-3/4">
-      <FormGoals urlPage="despesas" />
+      <FormGoals urlPage="metas" />
     </div>
   )
 }

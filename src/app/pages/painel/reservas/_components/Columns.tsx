@@ -1,6 +1,5 @@
 'use client'
 
-import { Checkbox } from '@radix-ui/react-checkbox'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -13,32 +12,10 @@ import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
 import { PiggyBank } from '@prisma/client'
-import { DeleteButtom } from './DeleteButtom'
+import { DeleteButtom } from '../../_components/DeleteButtom'
 
 export const columns: ColumnDef<PiggyBank>[] = [
-  {
-    id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && 'indeterminate')
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Selecionar todos"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Selecionar linha"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-
+  // ------------------Status Column ------------------------
   {
     accessorKey: 'status',
     header: ({ column }) => {
@@ -60,6 +37,7 @@ export const columns: ColumnDef<PiggyBank>[] = [
       )
     },
   },
+  // ------------------Amount Column ------------------------
   {
     accessorKey: 'amount',
     header: ({ column }) => {
@@ -87,6 +65,7 @@ export const columns: ColumnDef<PiggyBank>[] = [
       return <div className="text-left font-medium">{formatted}</div>
     },
   },
+  // ------------------Date Column ------------------------
   {
     accessorKey: 'date',
     header: ({ column }) => {
@@ -108,6 +87,7 @@ export const columns: ColumnDef<PiggyBank>[] = [
       return <div className="text-left font-medium">{dateBR}</div>
     },
   },
+  // ------------------Description Column ------------------------
   {
     accessorKey: 'description',
     header: ({ column }) => {
@@ -131,6 +111,7 @@ export const columns: ColumnDef<PiggyBank>[] = [
       )
     },
   },
+  // ------------------Acitions Column ------------------------
   {
     id: 'actions',
     enableHiding: false,
@@ -154,8 +135,8 @@ export const columns: ColumnDef<PiggyBank>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Ver detalhes do registro</DropdownMenuItem>
-            <DropdownMenuItem>
-              <DeleteButtom id={row.original.id} />
+            <DropdownMenuItem asChild>
+              <DeleteButtom id={row.original.id} routeName="piggybank" />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

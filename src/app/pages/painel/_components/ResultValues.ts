@@ -4,11 +4,12 @@ export interface ProcessedData {
   totalExpenses: () => string
   totalIncomes: () => string
   totalGoals: () => string
+  totalPiggy: () => string
   balance: () => string
 }
 
 export async function processData() {
-  const { incomes, expenses, goals } = await fetchItems()
+  const { incomes, expenses, goals, piggies } = await fetchItems()
   // Use incomes, expenses, and goals here
   const totalIncomes = (): string => {
     let total = 0
@@ -28,6 +29,13 @@ export async function processData() {
     let total = 0
     goals.forEach((goal) => {
       total += parseFloat(goal.amount!)
+    })
+    return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+  }
+  const totalPiggy = (): string => {
+    let total = 0
+    piggies.forEach((piggy) => {
+      total += parseFloat(piggy.amount!)
     })
     return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
   }
@@ -52,5 +60,5 @@ export async function processData() {
     return sum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
   }
 
-  return { totalIncomes, totalExpenses, totalGoals, balance }
+  return { totalIncomes, totalExpenses, totalGoals, totalPiggy, balance }
 }

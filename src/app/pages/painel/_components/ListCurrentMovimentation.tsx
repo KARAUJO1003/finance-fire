@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { cn } from '@/lib/utils'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 type ListCurrentMovimentationProps = {
   classNames?: string
@@ -47,29 +48,31 @@ export async function ListCurrentMovimentation({
           <span>Você ainda não possui registros.</span>
         </div>
       )}
-      <ul>
-        {data.map((i) => (
-          <li key={i.id} className="border-b  last:border-none">
-            <CardContent className="py-2 flex justify-between items-end">
-              <div className="flex flex-col ">
-                <strong className="text-sm">{i.description}</strong>
-                <span className="text-xs w-fit  pl-1 text-muted-foreground">
-                  {i.category?.name}
-                </span>
-              </div>
+      <ScrollArea>
+        <ul className="max-h-64">
+          {data.map((i) => (
+            <li key={i.id} className="border-b  last:border-none">
+              <CardContent className="py-2 flex justify-between items-center">
+                <div className="flex flex-col ">
+                  <strong className="text-sm">{i.description}</strong>
+                  <span className="text-xs w-fit  pl-1 text-muted-foreground">
+                    {i.category?.name}
+                  </span>
+                </div>
 
-              <div className="flex flex-col items-end gap-1">
-                <span className="text-xs text-muted-foreground">
-                  {i.created_at?.toLocaleDateString()}
-                </span>
-                <span className="text-sm ">
-                  {formatter.format(Number(i.amount))}
-                </span>
-              </div>
-            </CardContent>
-          </li>
-        ))}
-      </ul>
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-xs text-muted-foreground">
+                    {i.created_at?.toLocaleDateString()}
+                  </span>
+                  <span className="text-sm ">
+                    {formatter.format(Number(i.amount))}
+                  </span>
+                </div>
+              </CardContent>
+            </li>
+          ))}
+        </ul>
+      </ScrollArea>
     </Card>
   )
 }

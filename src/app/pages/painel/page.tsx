@@ -4,13 +4,16 @@ import { redirect } from 'next/navigation'
 import {
   AdminCard,
   AdminCardActions,
+  AdminCardContent,
   AdminCardHeader,
+  AdminCardHeaderLink,
   AdminCardHeaderTitle,
   CardAdmin,
 } from './_components/CardAdminPainel'
 import { processData } from './_components/ResultValues'
 import {
   Activity,
+  Link2,
   PiggyBank,
   Rocket,
   TrendingDown,
@@ -19,6 +22,9 @@ import {
 import { ListCurrentMovimentation } from './_components/ListCurrentMovimentation'
 import Example from './_components/PanelChart'
 import { fetchItems } from './_components/FetchItems'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import prisma from '@/lib/prisma'
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions)
@@ -26,7 +32,7 @@ export default async function Dashboard() {
     redirect('/')
   }
 
-  const { totalIncomes, totalExpenses, totalGoals, balance } =
+  const { totalIncomes, totalExpenses, totalGoals, totalPiggy, balance } =
     await processData()
 
   const { incomes, expenses, goals } = await fetchItems()
@@ -52,6 +58,14 @@ export default async function Dashboard() {
     })
     return total
   }
+
+  const piggyData = await prisma.piggyBank.findMany({
+    where: { userId: session.user.id },
+  })
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
 
   return (
     <main className="grid grid-cols-8 gap-5 w-full">
@@ -103,23 +117,61 @@ export default async function Dashboard() {
           />
         </div>
       </section>
+
       <section className="grid grid-rows-2 col-span-6 gap-4">
         <div className="col-span-1 flex gap-4">
-          <AdminCard className="w-[500px] p-4 h-full">
-            <AdminCardHeader>
+          <AdminCard className="w-[500px] py-4 px-0 h-full">
+            <AdminCardHeader className="space-y-2 pb-4 border-b">
               <AdminCardHeaderTitle icon={<PiggyBank size={14} />}>
                 Total guardado
               </AdminCardHeaderTitle>
-            </AdminCardHeader>
-            {/* <AdminCardContent>
               <AdminCardHeaderLink icon={<Link2 size={14} />} href="/">
-                R$ 705,00
+                {totalPiggy()}
               </AdminCardHeaderLink>
-              <CardDescription>Ainda faltam R$ 21.000,00</CardDescription>
-            </AdminCardContent> */}
+            </AdminCardHeader>
+
+            <div className="p-2">
+              {piggyData.length === 0 && (
+                <div className="  p-4 flex items-center justify-center text-muted-foreground text-sm">
+                  <span>Você ainda não possui registros.</span>
+                </div>
+              )}
+              <ScrollArea>
+                <ul className="max-h-52 space-y-1">
+                  {piggyData.map((i) => (
+                    <Card key={i.id} className="bg-transparent">
+                      <li className="border-b  last:border-none">
+                        <CardContent className="py-2 bg-transparent flex justify-between items-center">
+                          <div className="flex flex-col ">
+                            <strong className="text-sm text-muted-foreground">
+                              {i.description}
+                            </strong>
+                            <span
+                              className={`${i.status === 'Depositado' ? ' text-emerald-400' : ' text-red-400'} text-opacity-80 font-medium text-xs w-fit  pl-1 `}
+                            >
+                              {i.status}
+                            </span>
+                          </div>
+
+                          <div className="flex flex-col items-end gap-1">
+                            <span className="text-xs text-muted-foreground">
+                              {i.created_at?.toLocaleDateString()}
+                            </span>
+                            <span className="text-sm text-secondary-foreground">
+                              {formatter.format(Number(i.amount))}
+                            </span>
+                          </div>
+                        </CardContent>
+                      </li>
+                    </Card>
+                  ))}
+                </ul>
+              </ScrollArea>
+            </div>
           </AdminCard>
           <Example incomes={Tinc()} expenses={Texp()} goals={Tgoal()} />
         </div>
+
         <div className="col-span-1">
           <ListCurrentMovimentation />
         </div>

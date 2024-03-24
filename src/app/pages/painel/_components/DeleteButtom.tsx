@@ -9,14 +9,19 @@ import { toast } from 'sonner'
 type DeleteButtomProps = {
   classNames?: string
   id: string
+  routeName: 'piggybank' | 'incomes' | 'expenses' | 'goals'
 }
 
-export const DeleteButtom = ({ classNames, id }: DeleteButtomProps) => {
+export const DeleteButtom = ({
+  classNames,
+  id,
+  routeName,
+}: DeleteButtomProps) => {
   const router = useRouter()
 
   async function handleDelete() {
     try {
-      await api.delete(`/api/piggybank/`, { data: { id } })
+      await api.delete(`/api/${routeName}`, { data: { id } })
       toast.success('Deletado com sucesso!')
       router.refresh()
     } catch (error) {
@@ -31,7 +36,7 @@ export const DeleteButtom = ({ classNames, id }: DeleteButtomProps) => {
       size={'default'}
       className={cn(
         [
-          'flex items-center gap-2 w-full justify-start p-0 h-fit leading-none hover:no-underline hover:text-red-500',
+          'flex items-center gap-2 w-full justify-start px-2 leading-none hover:no-underline hover:text-red-500',
         ],
         classNames,
       )}

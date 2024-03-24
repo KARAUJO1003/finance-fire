@@ -1,6 +1,5 @@
 'use client'
 
-import { Checkbox } from '@radix-ui/react-checkbox'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -13,31 +12,9 @@ import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
 import { Expenses } from '@prisma/client'
+import { DeleteButtom } from '../../_components/DeleteButtom'
 
 export const columns: ColumnDef<Expenses>[] = [
-  {
-    id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && 'indeterminate')
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Selecionar todos"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Selecionar linha"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-
   {
     accessorKey: 'status',
     header: ({ column }) => {
@@ -59,6 +36,7 @@ export const columns: ColumnDef<Expenses>[] = [
       )
     },
   },
+
   {
     accessorKey: 'amount',
     header: ({ column }) => {
@@ -86,6 +64,7 @@ export const columns: ColumnDef<Expenses>[] = [
       return <div className="text-left font-medium">{formatted}</div>
     },
   },
+
   {
     accessorKey: 'date',
     header: ({ column }) => {
@@ -103,12 +82,11 @@ export const columns: ColumnDef<Expenses>[] = [
     },
     cell: ({ row }) => {
       // Formatar a data como uma data em formato brasileiro
-      const dateBR = new Date(row.getValue('date')).toLocaleDateString(
-        'pt-BR',
-      )
+      const dateBR = new Date(row.getValue('date')).toLocaleDateString('pt-BR')
       return <div className="text-left font-medium">{dateBR}</div>
     },
   },
+
   {
     accessorKey: 'description',
     header: ({ column }) => {
@@ -132,6 +110,7 @@ export const columns: ColumnDef<Expenses>[] = [
       )
     },
   },
+
   {
     id: 'actions',
     enableHiding: false,
@@ -154,8 +133,10 @@ export const columns: ColumnDef<Expenses>[] = [
               Copiar ID do registro
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Ver usuário</DropdownMenuItem>
             <DropdownMenuItem>Ver detalhes do registro</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <DeleteButtom id={row.original.id} routeName="expenses" />
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

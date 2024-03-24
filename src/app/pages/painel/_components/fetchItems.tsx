@@ -21,6 +21,12 @@ export async function fetchItems() {
       userId: session?.user.id,
     },
   })
+  const piggies = await prisma.piggyBank.findMany({
+    where: {
+      userId: session?.user.id,
+      status: 'Depositado',
+    },
+  })
 
-  return { incomes, expenses, goals }
+  return { incomes, expenses, goals, piggies }
 }
