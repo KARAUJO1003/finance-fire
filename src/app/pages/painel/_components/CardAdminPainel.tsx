@@ -19,7 +19,11 @@ type CardAdminPainelGenericProps<T = unknown> = {
 } & T
 
 const AdminCard = ({ children, className }: CardAdminPainelGenericProps) => {
-  return <Card className={cn(['py-4 bg-muted/20'], className)}>{children}</Card>
+  return (
+    <Card className={cn(['py-4 bg-muted/20 h-fit'], className)}>
+      {children}
+    </Card>
+  )
 }
 const AdminCardHeader = ({
   children,

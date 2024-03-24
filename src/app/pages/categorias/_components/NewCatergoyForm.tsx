@@ -101,7 +101,7 @@ export const NewCatergoyForm = ({
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nome</FormLabel>
+                      <FormLabel htmlFor="name">Nome</FormLabel>
                       <FormControl>
                         <Input
                           className="w-full"
@@ -118,7 +118,7 @@ export const NewCatergoyForm = ({
                   name="color"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Color</FormLabel>
+                      <FormLabel htmlFor="color">Color</FormLabel>
                       <FormControl>
                         <Input
                           type="color"
@@ -138,7 +138,7 @@ export const NewCatergoyForm = ({
                 name="type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Tipo</FormLabel>
+                    <FormLabel htmlFor="type">Tipo</FormLabel>
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}

@@ -13,6 +13,7 @@ import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
 import { PiggyBank } from '@prisma/client'
+import { DeleteButtom } from './DeleteButtom'
 
 export const columns: ColumnDef<PiggyBank>[] = [
   {
@@ -152,8 +153,10 @@ export const columns: ColumnDef<PiggyBank>[] = [
               Copiar ID do registro
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Ver usuário</DropdownMenuItem>
             <DropdownMenuItem>Ver detalhes do registro</DropdownMenuItem>
+            <DropdownMenuItem>
+              <DeleteButtom id={row.original.id} />
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

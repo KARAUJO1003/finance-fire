@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { TitleHome } from './movimentations/TitleHome'
+import { TitleHome } from './TitleHome'
 
 export const PageHomeComponent = () => {
   const textTitle = useRef(null)

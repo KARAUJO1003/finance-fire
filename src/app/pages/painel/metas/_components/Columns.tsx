@@ -103,9 +103,7 @@ export const columns: ColumnDef<Goal>[] = [
     },
     cell: ({ row }) => {
       // Formatar a data como uma data em formato brasileiro
-      const dateBR = new Date(row.getValue('date')).toLocaleDateString(
-        'pt-BR',
-      )
+      const dateBR = new Date(row.getValue('date')).toLocaleDateString('pt-BR')
       return <div className="text-left font-medium">{dateBR}</div>
     },
   },

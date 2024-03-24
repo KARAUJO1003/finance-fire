@@ -79,6 +79,7 @@ export function DataTableDemo<TData, TValue>({
     <div className="w-full max-sm:pb-12">
       <div className="flex items-center justify-between py-4 gap-2">
         <Input
+          id="filtro"
           placeholder="Filtrar por valor ..."
           value={(table.getColumn(amount)?.getFilterValue() as string) ?? ''}
           onChange={(event) =>

@@ -15,7 +15,7 @@ export const ButtonDelete = (categoryID: ButtomDeleteProps) => {
   const router = useRouter()
   async function handleDeleteCategory(categoryID: string) {
     try {
-      await api.delete('/api/categorias', {
+      await api.delete('/api/category', {
         data: {
           id: categoryID,
         },

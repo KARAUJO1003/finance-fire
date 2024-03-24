@@ -3,14 +3,19 @@ import prisma from '@/lib/prisma'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
+import { cn } from '@/lib/utils'
 
-export async function CardAdminCategories() {
+type ListCurrentMovimentationProps = {
+  classNames?: string
+}
+
+export async function ListCurrentMovimentation({
+  classNames,
+}: ListCurrentMovimentationProps) {
   const session = await getServerSession(authOptions)
   if (!session || !session.user) {
     return null
   }
-
-  console.log(session.user.id)
 
   const exp = await prisma.expenses.findMany({
     where: { userId: session?.user.id },
@@ -25,10 +30,7 @@ export async function CardAdminCategories() {
     include: { category: true },
   })
 
-  console.log(inc, exp, goal)
-
   const data = [...exp, ...inc, ...goal]
-  console.log(data)
 
   const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -36,7 +38,7 @@ export async function CardAdminCategories() {
   })
 
   return (
-    <Card>
+    <Card className={cn([''], classNames)}>
       <CardHeader className="bg-muted/20 py-3">
         <CardTitle>Ultimas movimentações</CardTitle>
       </CardHeader>
@@ -50,14 +52,20 @@ export async function CardAdminCategories() {
           <li key={i.id} className="border-b  last:border-none">
             <CardContent className="py-2 flex justify-between items-end">
               <div className="flex flex-col ">
-                <strong className="text-sm">{i.category?.name}</strong>
-                <span className="text-xs">
-                  {i.created_at?.toLocaleDateString()}
+                <strong className="text-sm">{i.description}</strong>
+                <span className="text-xs w-fit  pl-1 text-muted-foreground">
+                  {i.category?.name}
                 </span>
               </div>
-              <span className="text-sm">
-                {formatter.format(Number(i.amount))}
-              </span>
+
+              <div className="flex flex-col items-end gap-1">
+                <span className="text-xs text-muted-foreground">
+                  {i.created_at?.toLocaleDateString()}
+                </span>
+                <span className="text-sm ">
+                  {formatter.format(Number(i.amount))}
+                </span>
+              </div>
             </CardContent>
           </li>
         ))}

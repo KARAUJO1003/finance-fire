@@ -13,21 +13,21 @@ export async function processData() {
   const totalIncomes = (): string => {
     let total = 0
     incomes.forEach((income) => {
-      total += parseFloat(income.amount)
+      total += parseFloat(income.amount!)
     })
     return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
   }
   const totalExpenses = (): string => {
     let total = 0
     expenses.forEach((expenses) => {
-      total += parseFloat(expenses.amount)
+      total += parseFloat(expenses.amount!)
     })
     return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
   }
   const totalGoals = (): string => {
     let total = 0
     goals.forEach((goal) => {
-      total += parseFloat(goal.amount)
+      total += parseFloat(goal.amount!)
     })
     return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
   }
@@ -36,14 +36,14 @@ export async function processData() {
     function Income() {
       let total = 0
       incomes.forEach((income) => {
-        total += parseFloat(income.amount)
+        total += parseFloat(income.amount!)
       })
       return total
     }
     function Expense() {
       let total = 0
       expenses.forEach((expense) => {
-        total += parseFloat(expense.amount)
+        total += parseFloat(expense.amount!)
       })
       return total
     }

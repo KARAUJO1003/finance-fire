@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/select'
 import prisma from '@/lib/prisma'
 import { redirect } from 'next/navigation'
-
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { Label } from '@/components/ui/label'
@@ -40,6 +39,7 @@ export const FormIncomes = async () => {
         userId: session?.user.id,
       },
     })
+
     redirect('/pages/painel/ganhos')
   }
 

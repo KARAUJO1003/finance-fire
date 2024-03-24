@@ -43,6 +43,7 @@ export const FormGoals = async ({ urlPage }: FormGoalsProps) => {
         userId: session?.user.id,
       },
     })
+
     redirect(`/pages/painel/${urlPage}`)
   }
 
