@@ -136,7 +136,8 @@ const PieChartComponent = ({
       <PieChart className="w-fit h-fit ">
         <Pie
           activeIndex={activeIndex}
-          activeShape={renderActiveShape}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          activeShape={renderActiveShape as any}
           data={data}
           cx="50%"
           cy="50%"
