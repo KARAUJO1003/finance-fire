@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import prisma from '@/lib/prisma'
 
 export async function fetchItems() {
+  'use server'
   const session = await getServerSession(authOptions)
 
   const incomes = await prisma.incomes.findMany({
