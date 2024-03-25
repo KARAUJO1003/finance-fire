@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react'
 import { TitleHome } from './TitleHome'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
+import { signIn, useSession } from 'next-auth/react'
 
 export const PageHomeComponent = () => {
   const textTitle = useRef(null)
@@ -49,6 +50,11 @@ export const PageHomeComponent = () => {
       )
   })
 
+  const { status } = useSession()
+  const handleSignIn = async () => {
+    await signIn()
+  }
+
   return (
     <div className="w-full flex flex-col items-center mt-20 justify-start h-screen">
       <div className="flex flex-col">
@@ -68,18 +74,29 @@ export const PageHomeComponent = () => {
             podem ter certeza de que suas finanças estão em boas mãos.
           </h3>
         </article>
-        <Button
-          ref={btn}
-          size={'lg'}
-          className="bg-gradient-to-r  border font-bold w-max px-14 bg-clip-border from-violet-600  via-indigo-700  to-blue-700"
-        >
-          <Link
-            href={'pages/painel'}
-            className="flex  gap-2 items-center text-muted-foreground max-md:text-xs max-md:w-full"
+        {status === 'unauthenticated' ? (
+          <Button
+            ref={btn}
+            size={'lg'}
+            onClick={handleSignIn}
+            className="bg-gradient-to-r  border font-bold w-max px-14 bg-clip-border from-violet-600  via-indigo-700  to-blue-700"
           >
-            Clique aqui para continuar <ArrowRight size={16} />
-          </Link>
-        </Button>
+            Fazer login
+          </Button>
+        ) : (
+          <Button
+            ref={btn}
+            size={'lg'}
+            className="bg-gradient-to-r  border font-bold w-max px-14 bg-clip-border from-violet-600  via-indigo-700  to-blue-700"
+          >
+            <Link
+              href={'pages/painel'}
+              className="flex  gap-2 items-center text-muted-foreground max-md:text-xs max-md:w-full"
+            >
+              Clique aqui para continuar <ArrowRight size={16} />
+            </Link>
+          </Button>
+        )}
       </div>
     </div>
   )

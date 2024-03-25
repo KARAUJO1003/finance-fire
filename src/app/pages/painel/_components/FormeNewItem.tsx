@@ -57,7 +57,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
     <Form {...form}>
       <form
         action={handleSubmit}
-        onSubmit={() => toast.success('Item registrado com suceso')}
+        onClick={() => toast.success('Item registrado com suceso')}
       >
         <div className="flex flex-col items-center gap-3">
           <FormField
@@ -65,7 +65,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
             name="description"
             render={({ field }) => (
               <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
-                <FormLabel htmlFor="name">Descrição</FormLabel>
+                <FormLabel htmlFor="description">Descrição</FormLabel>
                 <FormControl>
                   <Input
                     className="w-full"

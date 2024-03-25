@@ -124,7 +124,10 @@ export default async function Dashboard() {
               <AdminCardHeaderTitle icon={<PiggyBank size={14} />}>
                 Total guardado
               </AdminCardHeaderTitle>
-              <AdminCardHeaderLink icon={<Link2 size={14} />} href="/">
+              <AdminCardHeaderLink
+                icon={<Link2 size={14} />}
+                href="/pages/painel/reservas"
+              >
                 {totalPiggy()}
               </AdminCardHeaderLink>
             </AdminCardHeader>
@@ -168,7 +171,6 @@ export default async function Dashboard() {
               </ScrollArea>
             </div>
           </AdminCard>
-
           <Example incomes={Tinc()} expenses={Texp()} goals={Tgoal()} />
         </div>
 
