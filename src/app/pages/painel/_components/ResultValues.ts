@@ -1,4 +1,4 @@
-import { fetchItems } from './FetchItems'
+import fetchItems from '@/app/pages/painel/_components/FetchItems'
 
 export interface ProcessedData {
   totalExpenses: () => string

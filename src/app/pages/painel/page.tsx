@@ -20,7 +20,7 @@ import {
 } from 'lucide-react'
 import { ListCurrentMovimentation } from './_components/ListCurrentMovimentation'
 import Example from './_components/PanelChart'
-import { fetchItems } from './_components/FetchItems'
+import fetchItems from '@/app/pages/painel/_components/FetchItems'
 import { Card, CardContent } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import prisma from '@/lib/prisma'

@@ -1,9 +1,9 @@
+'use server'
 import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import prisma from '@/lib/prisma'
 
-export async function fetchItems() {
-  'use server'
+export default async function fetchItems() {
   const session = await getServerSession(authOptions)
 
   const incomes = await prisma.incomes.findMany({
