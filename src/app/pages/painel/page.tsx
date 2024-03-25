@@ -119,8 +119,8 @@ export default async function Dashboard() {
 
       <section className="grid grid-rows-2 col-span-6 gap-4 max-xl:col-span-8">
         <div className="col-span-1 flex gap-4 max-lg:flex-col">
-          <AdminCard className="w-[500px] max-xl:w-full py-4 px-0 h-full">
-            <AdminCardHeader className="space-y-2 pb-4 border-b">
+          <AdminCard className="w-[500px] max-xl:w-full p-0 h-full bg-transparent">
+            <AdminCardHeader className="space-y-2 pb-4 border-b bg-muted/20 pt-4 ">
               <AdminCardHeaderTitle icon={<PiggyBank size={14} />}>
                 Total guardado
               </AdminCardHeaderTitle>
@@ -138,7 +138,7 @@ export default async function Dashboard() {
               <ScrollArea>
                 <ul className="max-h-52 space-y-1 ">
                   {piggyData.map((i) => (
-                    <Card key={i.id} className="border-none bg-transparent">
+                    <Card key={i.id} className="border-none  bg-muted/10">
                       <li className="border-b  border-muted">
                         <CardContent className="py-2 bg-transparent flex justify-between items-center">
                           <div className="flex flex-col ">

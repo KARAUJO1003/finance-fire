@@ -24,6 +24,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { toast } from 'sonner'
 
 type CateProps = {
   id: string
@@ -54,7 +55,10 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
 
   return (
     <Form {...form}>
-      <form action={handleSubmit}>
+      <form
+        action={handleSubmit}
+        onSubmit={() => toast.success('Item registrado com suceso')}
+      >
         <div className="flex flex-col items-center gap-3">
           <FormField
             control={form.control}
