@@ -4,7 +4,6 @@ import { redirect } from 'next/navigation'
 import {
   AdminCard,
   AdminCardActions,
-  AdminCardContent,
   AdminCardHeader,
   AdminCardHeaderLink,
   AdminCardHeaderTitle,
@@ -22,7 +21,7 @@ import {
 import { ListCurrentMovimentation } from './_components/ListCurrentMovimentation'
 import Example from './_components/PanelChart'
 import { fetchItems } from './_components/FetchItems'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import prisma from '@/lib/prisma'
 
@@ -69,8 +68,8 @@ export default async function Dashboard() {
 
   return (
     <main className="grid grid-cols-8 gap-5 w-full">
-      <section className="grid grid-rows-4 gap-4 col-span-2">
-        <div className="row-span-4 flex flex-col gap-4">
+      <section className="grid grid-rows-4 gap-4 col-span-2 max-xl:col-span-8">
+        <div className="row-span-4 flex flex-col gap-4 max-xl:grid max-xl:grid-cols-2 max-sm:grid-cols-1">
           <CardAdmin
             titleValue="Saldo"
             titleIcon={<Activity size={14} className="text-muted-foreground" />}
@@ -118,9 +117,9 @@ export default async function Dashboard() {
         </div>
       </section>
 
-      <section className="grid grid-rows-2 col-span-6 gap-4">
-        <div className="col-span-1 flex gap-4">
-          <AdminCard className="w-[500px] py-4 px-0 h-full">
+      <section className="grid grid-rows-2 col-span-6 gap-4 max-xl:col-span-8">
+        <div className="col-span-1 flex gap-4 max-lg:flex-col">
+          <AdminCard className="w-[500px] max-xl:w-full py-4 px-0 h-full">
             <AdminCardHeader className="space-y-2 pb-4 border-b">
               <AdminCardHeaderTitle icon={<PiggyBank size={14} />}>
                 Total guardado
@@ -130,17 +129,17 @@ export default async function Dashboard() {
               </AdminCardHeaderLink>
             </AdminCardHeader>
 
-            <div className="p-2">
+            <div>
               {piggyData.length === 0 && (
                 <div className="  p-4 flex items-center justify-center text-muted-foreground text-sm">
                   <span>Você ainda não possui registros.</span>
                 </div>
               )}
               <ScrollArea>
-                <ul className="max-h-52 space-y-1">
+                <ul className="max-h-52 space-y-1 ">
                   {piggyData.map((i) => (
-                    <Card key={i.id} className="bg-transparent">
-                      <li className="border-b  last:border-none">
+                    <Card key={i.id} className="border-none bg-transparent">
+                      <li className="border-b  border-muted">
                         <CardContent className="py-2 bg-transparent flex justify-between items-center">
                           <div className="flex flex-col ">
                             <strong className="text-sm text-muted-foreground">
@@ -169,6 +168,7 @@ export default async function Dashboard() {
               </ScrollArea>
             </div>
           </AdminCard>
+
           <Example incomes={Tinc()} expenses={Texp()} goals={Tgoal()} />
         </div>
 

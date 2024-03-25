@@ -39,14 +39,14 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   urlpage: string
-  amount: string
+  description: string
 }
 
 export function DataTableDemo<TData, TValue>({
   columns,
   data,
   urlpage,
-  amount,
+  description,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -80,10 +80,12 @@ export function DataTableDemo<TData, TValue>({
       <div className="flex items-center justify-between py-4 gap-2">
         <Input
           id="filtro"
-          placeholder="Filtrar por valor ..."
-          value={(table.getColumn(amount)?.getFilterValue() as string) ?? ''}
+          placeholder="Filtrar descrição..."
+          value={
+            (table.getColumn(description)?.getFilterValue() as string) ?? ''
+          }
           onChange={(event) =>
-            table.getColumn(amount)?.setFilterValue(event.target.value)
+            table.getColumn(description)?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

@@ -57,26 +57,25 @@ export const PageHomeComponent = () => {
         </span>
         <article
           ref={textParag}
-          className="flex gap-2 items-center max-w-lg mb-8 text-muted-foreground"
+          className="flex gap-2 items-center max-w-lg mb-8 text-muted-foreground max-sm:text-sm"
         >
           <h3>
             Com uma interface intuitiva e fácil de usar, o FinanceFire oferece
             recursos avançados com{' '}
             <strong>análise de desempenho financeiro</strong> e{' '}
             <strong>recomendações personalizadas</strong>. Além disso, o
-            FinanceFire é seguro e confiável, e oferece suporte técnico 24 horas
-            por dia, 7 dias por semana. Com o FinanceFire, os usuários podem ter
-            certeza de que seus finanças estão em boas hands.
+            FinanceFire é seguro e confiável Com o FinanceFire, os usuários
+            podem ter certeza de que suas finanças estão em boas mãos.
           </h3>
         </article>
         <Button
           ref={btn}
           size={'lg'}
-          className="bg-gradient-to-r border font-bold w-max px-14 bg-clip-border from-violet-600  via-indigo-700  to-blue-700"
+          className="bg-gradient-to-r  border font-bold w-max px-14 bg-clip-border from-violet-600  via-indigo-700  to-blue-700"
         >
           <Link
             href={'pages/painel'}
-            className="flex gap-2 items-center text-muted-foreground max-md:text-xs max-md:w-full"
+            className="flex  gap-2 items-center text-muted-foreground max-md:text-xs max-md:w-full"
           >
             Clique aqui para continuar <ArrowRight size={16} />
           </Link>

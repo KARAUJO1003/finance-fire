@@ -24,7 +24,7 @@ export default async function Despesas() {
     <div>
       <DataTableDemo
         data={data}
-        amount={'amount'}
+        description={'description'}
         columns={columns}
         urlpage="despesas"
       />

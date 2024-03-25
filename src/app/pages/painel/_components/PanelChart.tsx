@@ -55,7 +55,7 @@ const renderActiveShape = (props: RenderActiveShapeProps): JSX.Element => {
         dy={8}
         textAnchor="middle"
         fill={fill}
-        className="text-sm"
+        className="text-xs"
       >
         {payload.name}
       </text>
@@ -130,8 +130,10 @@ const PieChartComponent = ({
   }
 
   return (
-    <ResponsiveContainer className={' border rounded-xl h-max w-full'}>
-      <PieChart className="w-fit h-fit">
+    <ResponsiveContainer
+      className={' border rounded-xl h-max w-full max-lg:min-h-80 '}
+    >
+      <PieChart className="w-fit h-fit ">
         <Pie
           activeIndex={activeIndex}
           activeShape={renderActiveShape}

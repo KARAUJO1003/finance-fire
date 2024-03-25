@@ -19,6 +19,11 @@ export const CategoryCard = async () => {
     where: {
       userId: session?.user.id,
     },
+    include: {
+      expenses: true,
+      incomes: true,
+      Goal: true,
+    },
   })
 
   return (
@@ -38,8 +43,9 @@ export const CategoryCard = async () => {
           <div className="mb-3 flex items-center gap-4 p-4">
             <Disc2 color={`${item.color}`} size={14} />
             <CardHeader className="flex  items-start justify-start p-0">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-between gap-3">
                 <CardTitle>{item.name}</CardTitle>
+                <CardDescription>{item.incomes.length}</CardDescription>
               </div>
               <CardDescription className="flex flex-col justify-center items-center">
                 <span>Criado em {item.created_at?.toLocaleDateString()}</span>

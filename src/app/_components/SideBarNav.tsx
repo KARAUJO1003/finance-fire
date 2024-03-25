@@ -1,11 +1,11 @@
 'use client'
 
 import {
-  Activity,
   Blocks,
   HomeIcon,
   LayoutDashboard,
   PiggyBank,
+  Rocket,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
@@ -73,7 +73,7 @@ export const SideBarNav = () => {
             href="/pages/painel/ganhos"
             currentPath={pathname}
           >
-            Rendimentos
+            Receita
           </SideNavLink>
         </Button>
 
@@ -87,7 +87,7 @@ export const SideBarNav = () => {
             href="/pages/painel/despesas"
             currentPath={pathname}
           >
-            Despesas
+            Despesa
           </SideNavLink>
         </Button>
 
@@ -97,7 +97,7 @@ export const SideBarNav = () => {
           variant={'link'}
         >
           <SideNavLink
-            icon={<Activity size={14} className="mr-2 max-md:m-0" />}
+            icon={<Rocket size={14} className="mr-2 max-md:m-0" />}
             href="/pages/painel/metas"
             currentPath={pathname}
           >
@@ -115,7 +115,7 @@ export const SideBarNav = () => {
             href="/pages/painel/reservas"
             currentPath={pathname}
           >
-            Resevas
+            Caixinha
           </SideNavLink>
         </Button>
 
@@ -129,13 +129,20 @@ export const SideBarNav = () => {
             href="/pages/categorias"
             currentPath={pathname}
           >
-            Categorias
+            Categoria
           </SideNavLink>
         </Button>
       </SideNavContent>
       <SideNavFooter>
         <span className="text-xs text-muted-foreground">
-          Feito com 💙 por @kaesyo_
+          Feito com 💙 por{' '}
+          <Link
+            className="text-blue-500"
+            target="_blank"
+            href={'https://www.instagram.com/kaesyo_?igsh=cDFtZmU4YmJqbzg0'}
+          >
+            @kaesyo_
+          </Link>
         </span>
       </SideNavFooter>
     </SideNav>

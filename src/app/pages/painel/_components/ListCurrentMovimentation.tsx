@@ -41,7 +41,7 @@ export async function ListCurrentMovimentation({
   return (
     <Card className={cn([''], classNames)}>
       <CardHeader className="bg-muted/20 py-3">
-        <CardTitle>Ultimas movimentações</CardTitle>
+        <CardTitle className="max-sm:text-sm">Ultimas movimentações</CardTitle>
       </CardHeader>
       {data.length === 0 && (
         <div className="  p-4 flex items-center justify-center text-muted-foreground text-sm">
@@ -54,8 +54,10 @@ export async function ListCurrentMovimentation({
             <li key={i.id} className="border-b  last:border-none">
               <CardContent className="py-2 flex justify-between items-center">
                 <div className="flex flex-col ">
-                  <strong className="text-sm">{i.description}</strong>
-                  <span className="text-xs w-fit  pl-1 text-muted-foreground">
+                  <strong className="text-sm max-sm:text-xs">
+                    {i.description}
+                  </strong>
+                  <span className="text-xs w-fit flex gap-1 items-center pl-1 text-muted-foreground">
                     {i.category?.name}
                   </span>
                 </div>
@@ -64,7 +66,7 @@ export async function ListCurrentMovimentation({
                   <span className="text-xs text-muted-foreground">
                     {i.created_at?.toLocaleDateString()}
                   </span>
-                  <span className="text-sm ">
+                  <span className="text-sm max-sm:text-xs">
                     {formatter.format(Number(i.amount))}
                   </span>
                 </div>
