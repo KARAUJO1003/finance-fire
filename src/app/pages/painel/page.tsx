@@ -68,8 +68,8 @@ export default async function Dashboard() {
 
   return (
     <main className="grid grid-cols-8 gap-5 w-full">
-      <section className="grid grid-rows-4 gap-4 col-span-2 max-xl:col-span-8">
-        <div className="row-span-4 flex flex-col gap-4 max-xl:grid max-xl:grid-cols-2 max-sm:grid-cols-1">
+      <section className=" col-span-8 ">
+        <div className="grid grid-cols-4 gap-4 w-full  max-xl:grid max-xl:grid-cols-2 max-sm:grid-cols-1">
           <CardAdmin
             titleValue="Saldo"
             titleIcon={<Activity size={14} className="text-muted-foreground" />}
@@ -117,9 +117,9 @@ export default async function Dashboard() {
         </div>
       </section>
 
-      <section className="grid grid-rows-2 col-span-6 gap-4 max-xl:col-span-8">
+      <section className="grid grid-rows-2 gap-4 col-span-8">
         <div className="col-span-1 flex gap-4 max-lg:flex-col">
-          <AdminCard className="w-[500px] max-xl:w-full p-0 h-full bg-transparent">
+          <AdminCard className="w-[700px] max-xl:w-full p-0 h-full bg-transparent">
             <AdminCardHeader className="space-y-2 pb-4 border-b bg-muted/20 pt-4 ">
               <AdminCardHeaderTitle icon={<PiggyBank size={14} />}>
                 Total guardado
