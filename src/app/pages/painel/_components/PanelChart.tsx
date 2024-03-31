@@ -117,7 +117,7 @@ const PieChartComponent = ({
 }: PieChartComponentProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const data: DataItem[] = [
-    { name: 'Rendas', value: incomes },
+    { name: 'Ganhos', value: incomes },
     { name: 'Despesas', value: expenses },
     { name: 'Metas', value: goals },
   ]

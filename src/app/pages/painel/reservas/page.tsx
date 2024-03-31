@@ -30,7 +30,7 @@ export default async function Reservas() {
         urlpage="reservas"
         className="max-md:hidden"
       />
-      <MobileList.MobileListContainer>
+      <MobileList.MobileListContainer urlNew="reservas">
         {data.map((item) => {
           const amount = parseFloat(item.amount!)
 
@@ -49,6 +49,8 @@ export default async function Reservas() {
               date={item.date!}
               status={item.status!}
               user={item.user?.name || ''}
+              id={item.id}
+              routename="piggybank"
             />
           )
         })}

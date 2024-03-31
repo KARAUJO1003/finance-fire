@@ -44,8 +44,8 @@ const Schema = z.object({
   description: z.string().min(2, 'Digite um nome válido.'),
   amount: z.string().min(2, 'Digite um valor válido.'),
   date: z.string(),
-  categoryId: z.string(),
-  status: z.string(),
+  categoryId: z.string().min(2, 'Digite um valor válido.'),
+  status: z.string().min(2, 'Digite um valor válido.'),
 })
 
 export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
@@ -57,7 +57,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
     <Form {...form}>
       <form
         action={handleSubmit}
-        onClick={() => toast.success('Item registrado com suceso')}
+        onSubmit={() => toast.success('Item registrado com suceso')}
       >
         <div className="flex flex-col items-center max-md:items-start gap-3">
           <FormField
@@ -68,6 +68,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
                 <FormLabel htmlFor="description">Descrição</FormLabel>
                 <FormControl>
                   <Input
+                    required
                     className="w-full"
                     placeholder="Descreva sobre seu registro..."
                     {...field}
@@ -86,6 +87,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
                 <FormLabel htmlFor="amount">Valor</FormLabel>
                 <FormControl>
                   <Input
+                    required
                     className="w-full"
                     placeholder="Digite um valor..."
                     {...field}
@@ -104,6 +106,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
                 <FormLabel htmlFor="date">Data</FormLabel>
                 <FormControl>
                   <Input
+                    required
                     type="date"
                     className="w-full"
                     placeholder="Digite uma data..."
@@ -123,6 +126,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
                 <FormLabel>Categoria</FormLabel>
                 <FormControl>
                   <Select
+                    required
                     onValueChange={field.onChange}
                     defaultValue={form.getValues('categoryId')}
                   >
@@ -161,6 +165,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
                 <FormLabel>Status</FormLabel>
                 <FormControl>
                   <Input
+                    required
                     placeholder="Digite um nome para seu registro.."
                     {...field}
                   />
@@ -170,7 +175,11 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
           />
 
           <div className="w-[700px] flex justify-end max-md:w-full">
-            <Button className="w-[600px] mt-5 max-md:w-full" type="submit">
+            <Button
+              disabled={form.formState.isLoading}
+              className="w-[600px] mt-5 max-md:w-full"
+              type="submit"
+            >
               Cadastrar
             </Button>
           </div>

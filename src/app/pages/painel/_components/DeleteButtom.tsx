@@ -1,9 +1,11 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { api } from '@/lib/api'
 import { cn } from '@/lib/utils'
 import { Trash } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 import { toast } from 'sonner'
 
 type DeleteButtomProps = {
@@ -18,11 +20,14 @@ export const DeleteButtom = ({
   routeName,
 }: DeleteButtomProps) => {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
 
   async function handleDelete() {
     try {
+      setIsLoading(true)
       await api.delete(`/api/${routeName}`, { data: { id } })
       toast.success('Deletado com sucesso!')
+      setIsLoading(false)
       router.refresh()
     } catch (error) {
       toast.error('Não Deletado')
@@ -32,6 +37,7 @@ export const DeleteButtom = ({
   return (
     <Button
       onClick={handleDelete}
+      disabled={isLoading}
       variant={'link'}
       size={'default'}
       className={cn(
