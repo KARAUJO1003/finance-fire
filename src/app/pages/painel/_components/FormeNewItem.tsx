@@ -59,12 +59,12 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
         action={handleSubmit}
         onClick={() => toast.success('Item registrado com suceso')}
       >
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center max-md:items-start gap-3">
           <FormField
             control={form.control}
             name="description"
             render={({ field }) => (
-              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full">
                 <FormLabel htmlFor="description">Descrição</FormLabel>
                 <FormControl>
                   <Input
@@ -82,7 +82,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
             control={form.control}
             name="amount"
             render={({ field }) => (
-              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full">
                 <FormLabel htmlFor="amount">Valor</FormLabel>
                 <FormControl>
                   <Input
@@ -100,7 +100,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
             control={form.control}
             name="date"
             render={({ field }) => (
-              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full">
                 <FormLabel htmlFor="date">Data</FormLabel>
                 <FormControl>
                   <Input
@@ -119,7 +119,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
             control={form.control}
             name="categoryId"
             render={({ field }) => (
-              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full">
                 <FormLabel>Categoria</FormLabel>
                 <FormControl>
                   <Select
@@ -157,7 +157,7 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
             control={form.control}
             name="status"
             render={({ field }) => (
-              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+              <FormItem className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full">
                 <FormLabel>Status</FormLabel>
                 <FormControl>
                   <Input
@@ -169,8 +169,8 @@ export const FormeNewItem = ({ handleSubmit, categories }: FormProps) => {
             )}
           />
 
-          <div className="w-[700px] flex justify-end">
-            <Button className="w-[600px] mt-5 " type="submit">
+          <div className="w-[700px] flex justify-end max-md:w-full">
+            <Button className="w-[600px] mt-5 max-md:w-full" type="submit">
               Cadastrar
             </Button>
           </div>

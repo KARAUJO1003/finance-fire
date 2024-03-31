@@ -8,7 +8,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import React from 'react'
+import React, { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -56,6 +56,7 @@ export const NewCatergoyForm = ({
 }: NewCatergoyFormProps) => {
   const { data } = useSession()
   const router = useRouter()
+  const [openSheet, setOpenSheet] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -73,11 +74,14 @@ export const NewCatergoyForm = ({
       userId: data?.user.id,
     })
     router.refresh()
+
+    setOpenSheet(!openSheet)
+    // setOpenSheet(!openSheet)
   }
 
   return (
     <div>
-      <Sheet>
+      <Sheet onOpenChange={() => setOpenSheet(!openSheet)} open={openSheet}>
         <SheetTrigger asChild>
           <Button
             className={cn(['gap-2'], classNames)}
@@ -88,7 +92,12 @@ export const NewCatergoyForm = ({
             Nova categoria
           </Button>
         </SheetTrigger>
-        <SheetContent className="max-sm:w-full">
+        <SheetContent
+          className="max-sm:w-full"
+          onInteractOutside={(e) => {
+            e.preventDefault()
+          }}
+        >
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               <h2 className="font-semibold text-lg">
@@ -118,7 +127,7 @@ export const NewCatergoyForm = ({
                   name="color"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="color">Color</FormLabel>
+                      <FormLabel htmlFor="color">Cor</FormLabel>
                       <FormControl>
                         <Input
                           type="color"

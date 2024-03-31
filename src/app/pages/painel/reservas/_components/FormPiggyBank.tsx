@@ -53,7 +53,7 @@ export const FormPiggyBank = async ({ urlPage }: FormPiggyBankProps) => {
   return (
     <form action={handleSumbmit}>
       <div className=" flex flex-col items-center gap-3">
-        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full max-md:gap-2">
           <Label>Descrição</Label>
           <Input
             name="description"
@@ -61,17 +61,17 @@ export const FormPiggyBank = async ({ urlPage }: FormPiggyBankProps) => {
           />
         </div>
 
-        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full max-md:gap-2">
           <Label>Meta</Label>
           <Input placeholder="R$" name="amount" />
         </div>
 
-        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full max-md:gap-2">
           <Label>Data</Label>
           <Input name="date" type="date" />
         </div>
 
-        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full max-md:gap-2">
           <Label>Meta</Label>
           <Select name="goalsId">
             <SelectTrigger>
@@ -95,7 +95,7 @@ export const FormPiggyBank = async ({ urlPage }: FormPiggyBankProps) => {
           </Select>
         </div>
 
-        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center">
+        <div className="col-span-full grid grid-cols-[100px_minmax(600px,500px)] items-center max-md:flex max-md:flex-col max-md:items-start max-md:w-full max-md:gap-2">
           <Label>Status</Label>
           <Select name="status" defaultValue={'Depositado'}>
             <SelectTrigger>
@@ -110,8 +110,8 @@ export const FormPiggyBank = async ({ urlPage }: FormPiggyBankProps) => {
           </Select>
         </div>
 
-        <div className="w-[700px] flex justify-end">
-          <Button className="w-[600px] mt-5 " type="submit">
+        <div className="w-[700px] flex justify-end max-md:w-full">
+          <Button className="w-[600px] mt-5 max-md:w-full" type="submit">
             Cadastrar
           </Button>
         </div>
