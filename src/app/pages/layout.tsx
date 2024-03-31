@@ -9,7 +9,7 @@ export default function Layout({
     <div className="h-screen w-full flex flex-col ">
       <HeaderPages />
 
-      <main className="w-full px-10 py-5 max-md:p-5 max-sm:px-3  h-screen">
+      <main className="w-full px-10 py-5 max-md:p-5 max-sm:px-3  h-screen overflow-y-scroll">
         {children}
       </main>
       <Toaster />

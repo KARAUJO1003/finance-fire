@@ -1,21 +1,35 @@
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
-import { PlusIcon } from 'lucide-react'
+import { EllipsisVertical, PlusIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import { DeleteButtom } from '@/app/pages/painel/_components/DeleteButtom'
 
 type GenericMobileProps<T = unknown> = {
   children: React.ReactNode
   className?: string
 } & T
 
-const MobileListContainer = ({ children, className }: GenericMobileProps) => {
+type MobileContainerProps = {
+  urlNew: 'reservas' | 'metas' | 'ganhos' | 'despesas'
+}
+
+const MobileListContainer = ({
+  children,
+  className,
+  urlNew,
+}: GenericMobileProps<MobileContainerProps>) => {
   return (
     <div className={cn(['max-md:block hidden space-y-4'], className)}>
       <Button className="gap-2">
         <PlusIcon size={16} />
-        <Link href="/pages/painel/reservas/new">Novo Registro</Link>
+        <Link href={`/pages/painel/${urlNew}/new`}>Novo Registro</Link>
       </Button>
       <ul className="gap-3 flex flex-col">{children}</ul>
     </div>
@@ -24,12 +38,16 @@ const MobileListContainer = ({ children, className }: GenericMobileProps) => {
 
 type MobileListItemProps = {
   key: string
+  id: string
+  routename: 'goals' | 'incomes' | 'expenses' | 'piggybank'
 }
 
 const MobileListItem = ({
   children,
   className,
   key,
+  id,
+  routename,
 }: GenericMobileProps<MobileListItemProps>) => {
   return (
     <li key={key}>
@@ -39,7 +57,15 @@ const MobileListItem = ({
           className,
         )}
       >
-        {children}
+        <div className="flex justify-between w-full mr-3">{children}</div>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <EllipsisVertical />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent side="left">
+            <DeleteButtom id={id} routeName={routename} />
+          </DropdownMenuContent>
+        </DropdownMenu>
       </Card>
     </li>
   )
@@ -95,6 +121,8 @@ type MobileItemProps = {
   date: string
   status: string
   user: string
+  id: string
+  routename: 'goals' | 'incomes' | 'expenses' | 'piggybank'
 }
 
 export const MobileItem = ({
@@ -106,9 +134,16 @@ export const MobileItem = ({
   user,
   className,
   key,
+  id,
+  routename,
 }: MobileItemProps) => {
   return (
-    <MobileList.MobileListItem key={key} className={cn([], className)}>
+    <MobileList.MobileListItem
+      routename={routename}
+      id={id}
+      key={key}
+      className={cn([], className)}
+    >
       <MobileList.MobileListItemGroup>
         <MobileList.MobileListItemTitle>{title}</MobileList.MobileListItemTitle>
         <MobileList.MobileListItemDescription>
