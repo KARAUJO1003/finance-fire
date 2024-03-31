@@ -31,11 +31,7 @@ export const HeaderPages = () => {
       <div className="flex items-center space-x-5">
         {status === 'loading' && <Loader className="animate-spin" />}
         {status === 'unauthenticated' && (
-          <Button
-            onClick={handleSignIn}
-            variant={'ghost'}
-            className="max-sm:hidden"
-          >
+          <Button onClick={handleSignIn} variant={'ghost'}>
             Entrar
             <LogIn size={14} />
           </Button>
@@ -44,9 +40,9 @@ export const HeaderPages = () => {
           <Button
             onClick={handleSignOut}
             variant={'outline'}
-            className="max-sm:hidden gap-2"
+            className=" gap-2"
           >
-            Sair
+            <span className="max-sm:hidden">Sair</span>
             <LogOut size={14} />
           </Button>
         )}

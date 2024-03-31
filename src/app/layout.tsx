@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/providers/theme-provider'
 import { SideBarNav } from './_components/SideBarNav'
 import { AuthProvider } from '@/providers/auth'
 import { Toaster } from '@/components/ui/sonner'

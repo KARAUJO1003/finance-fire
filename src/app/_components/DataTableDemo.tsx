@@ -34,12 +34,14 @@ import {
 
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   urlpage: string
   description: string
+  className?: string
 }
 
 export function DataTableDemo<TData, TValue>({
@@ -47,6 +49,7 @@ export function DataTableDemo<TData, TValue>({
   data,
   urlpage,
   description,
+  className,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -76,7 +79,7 @@ export function DataTableDemo<TData, TValue>({
   })
 
   return (
-    <div className="w-full max-sm:pb-12">
+    <div className={cn(['w-full max-sm:pb-12'], className)}>
       <div className="flex items-center justify-between py-4 gap-2">
         <Input
           id="filtro"
