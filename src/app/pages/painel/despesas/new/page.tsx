@@ -13,7 +13,7 @@ export default async function page() {
   }
 
   const categories = await prisma.category.findMany({
-    where: { type: 'SAIDA' },
+    where: { type: 'SAIDA', userId: session.user.id },
   })
 
   return (
