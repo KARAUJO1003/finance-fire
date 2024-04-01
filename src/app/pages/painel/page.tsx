@@ -118,8 +118,11 @@ export default async function Dashboard() {
       </section>
 
       <section className="flex flex-col-reverse pb-20 gap-4 col-span-8">
+        <div className="col-span-1">
+          <ListCurrentMovimentation />
+        </div>
         <div className="col-span-1 flex gap-4 max-lg:flex-col min-h-80">
-          <AdminCard className="w-[700px] max-xl:w-full p-0 h-full bg-transparent">
+          <AdminCard className="w-[1100px] max-xl:w-full p-0 h-full bg-transparent">
             <AdminCardHeader className="space-y-2 pb-4 border-b  pt-4 ">
               <AdminCardHeaderTitle
                 icon={<PiggyBank size={14} className="text-sm" />}
@@ -175,10 +178,6 @@ export default async function Dashboard() {
             </div>
           </AdminCard>
           <Example incomes={Tinc()} expenses={Texp()} goals={Tgoal()} />
-        </div>
-
-        <div className="col-span-1">
-          <ListCurrentMovimentation />
         </div>
       </section>
     </main>
