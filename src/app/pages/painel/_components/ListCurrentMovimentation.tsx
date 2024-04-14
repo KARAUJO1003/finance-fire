@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { cn } from '@/lib/utils'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { Badge } from '@/components/ui/badge'
 
 type ListCurrentMovimentationProps = {
   classNames?: string
@@ -53,13 +54,19 @@ export async function ListCurrentMovimentation({
           {data.map((i) => (
             <li key={i.id} className="border-b  last:border-none">
               <CardContent className="py-2 flex justify-between items-center">
-                <div className="flex flex-col ">
+                <div className="flex flex-col gap-2">
                   <strong className="text-sm max-sm:text-xs">
                     {i.description}
                   </strong>
-                  <span className="text-xs w-fit flex gap-1 items-center pl-1 text-muted-foreground">
+                  <Badge
+                    style={{
+                      backgroundColor: `${i.category?.color}`,
+                      color: 'white',
+                    }}
+                    className="text-xs w-fit flex gap-1 items-cente py-0 rounded-sm border"
+                  >
                     {i.category?.name}
-                  </span>
+                  </Badge>
                 </div>
 
                 <div className="flex flex-col items-end gap-1">

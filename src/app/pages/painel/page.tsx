@@ -12,7 +12,6 @@ import {
 import { processData } from './_components/ResultValues'
 import {
   Activity,
-  Link2,
   PiggyBank,
   Rocket,
   TrendingDown,
@@ -120,14 +119,13 @@ export default async function Dashboard() {
       <section className="flex flex-col-reverse pb-20 gap-4 col-span-8">
         <div className="col-span-1 flex gap-4 max-lg:flex-col min-h-80">
           <AdminCard className="w-[700px] max-xl:w-full p-0 h-full bg-transparent">
-            <AdminCardHeader className="space-y-2 pb-4 border-b  pt-4 ">
+            <AdminCardHeader className=" py-2 border-b  flex flex-row items-center justify-between bg-muted/20">
               <AdminCardHeaderTitle
                 icon={<PiggyBank size={14} className="text-sm" />}
               >
                 Total guardado
               </AdminCardHeaderTitle>
               <AdminCardHeaderLink
-                icon={<Link2 size={14} />}
                 href="/pages/painel/reservas"
                 className="text-sm"
               >
@@ -142,7 +140,7 @@ export default async function Dashboard() {
                 </div>
               )}
               <ScrollArea>
-                <ul className="max-h-52 space-y-1 ">
+                <ul className="max-h-52 space-y-1">
                   {piggyData.map((i) => (
                     <Card key={i.id} className="border-none">
                       <li className="border-b  border-muted">
@@ -151,19 +149,17 @@ export default async function Dashboard() {
                             <strong className="text-sm text-muted-foreground">
                               {i.description}
                             </strong>
-                            <span
-                              className={`${i.status === 'Depositado' ? ' text-emerald-400' : ' text-red-400'} text-opacity-80 font-medium text-xs w-fit  pl-1 `}
-                            >
-                              {i.status}
+                            <span className="text-sm text-muted-foreground">
+                              {formatter.format(Number(i.amount))}
                             </span>
                           </div>
 
                           <div className="flex flex-col items-end gap-1">
-                            <span className="text-xs text-muted-foreground">
-                              {i.created_at?.toLocaleDateString()}
-                            </span>
-                            <span className="text-sm text-secondary-foreground">
-                              {formatter.format(Number(i.amount))}
+                            <span
+                              className={`${i.status === 'Depositado' ? ' text-emerald-400 bg-green-950/10 ' : 'bg-red-950/10 text-red-400'} border flex items-center gap-2 backdrop-blur-md rounded-full px-3 py-0.5 text-opacity-80 font-medium text-xs w-fit   `}
+                            >
+                              <span className="size-2 rounded-full bg-emerald-500/50 flex p-1" />
+                              {i.status}
                             </span>
                           </div>
                         </CardContent>
