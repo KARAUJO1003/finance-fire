@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={cn(['flex'], inter.className)}>
+      <body className={cn(['flex dark'], inter.className)}>
         <AuthProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <SideBarNav />
