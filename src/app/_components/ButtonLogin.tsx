@@ -3,10 +3,13 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { Loader, LogIn, LogOut } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export const ButtonLogin = () => {
+  const router = useRouter()
   const handleSignIn = async () => {
-    await signIn()
+    await signIn('google', { redirect: true, callbackUrl: '/pages/painel' })
+    router.push('/pages/painel')
   }
 
   const handleSignOut = async () => {

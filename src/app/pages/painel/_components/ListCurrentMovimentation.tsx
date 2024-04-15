@@ -59,10 +59,7 @@ export async function ListCurrentMovimentation({
                     {i.description}
                   </strong>
                   <Badge
-                    style={{
-                      backgroundColor: `${i.category?.color}`,
-                      color: 'white',
-                    }}
+                    variant="outline"
                     className="text-xs w-fit flex gap-1 items-cente py-0 rounded-sm border"
                   >
                     {i.category?.name}

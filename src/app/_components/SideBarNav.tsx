@@ -36,18 +36,20 @@ export const SideBarNav = () => {
         </Link>
       </SideNavHeader>
       <SideNavContent>
-        <Button
-          className="hover:no-underline p-0 justify-start"
-          variant={'link'}
-        >
-          <SideNavLink
-            icon={<HomeIcon size={14} className="mr-2 max-md:m-0" />}
-            href="/"
-            currentPath={pathname}
+        {status === 'unauthenticated' && (
+          <Button
+            className="hover:no-underline p-0 justify-start"
+            variant={'link'}
           >
-            Início
-          </SideNavLink>
-        </Button>
+            <SideNavLink
+              icon={<HomeIcon size={14} className="mr-2 max-md:m-0" />}
+              href="/"
+              currentPath={pathname}
+            >
+              Início
+            </SideNavLink>
+          </Button>
+        )}
 
         <Button
           disabled={status === 'unauthenticated'}
